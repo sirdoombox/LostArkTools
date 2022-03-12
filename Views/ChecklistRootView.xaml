@@ -23,11 +23,11 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0"
-                       Text="{Binding ServerTime, StringFormat='{}{0: Server Ti\\me: hh:mm}'}" />
+                       Text="{Binding ServerTime, StringFormat='{}{0: Server Ti\\me: HH:mm(UTC)}'}" />
             <TextBlock Grid.Column="1"
                        Text="{Binding TimeUntilDailyReset, StringFormat={}Daily reset in {0:hh} hours\, {0:mm} minutes}" />
             <TextBlock Grid.Column="2"
-                       Text="{Binding TimeUntilWeeklyReset, StringFormat={}Weekly reset in {0:hh} hours\, {0:mm} minutes}" />
+                       Text="{Binding TimeUntilWeeklyReset, StringFormat={}Weekly reset in {0:dd} days\, {0:hh} hours\, {0:mm} minutes}" />
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

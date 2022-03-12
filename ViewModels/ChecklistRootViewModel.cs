@@ -52,9 +52,9 @@ public class ChecklistRootViewModel : Conductor<CharacterChecklistViewModel>.Col
     
     private void SecondTick()
     {
-        ServerTime = DateTime.UtcNow;
+        ServerTime = DateTime.UtcNow.AddHours(1);
         var today = DateTime.Today;
-        var dailyReset = today.AddHours(11);
+        var dailyReset = today.AddHours(10);
         var thursdayReset = dailyReset.AddDays(((int)DayOfWeek.Thursday - (int)today.DayOfWeek + 7) % 7);
         if (ServerTime > dailyReset)
             dailyReset = dailyReset.AddDays(1);
