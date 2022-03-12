@@ -8,4 +8,11 @@ public class CharacterChecklistViewModel : Screen
         get => _characterName;
         set => SetAndNotify(ref _characterName, value);
     }
+
+    public TaskListViewModel Dailies { get; } = new();
+    public TaskListViewModel Weeklies { get; } = new();
+
+    public void DailyReset() => Dailies.Reset();
+    
+    public void WeeklyReset() => Dailies.Reset();
 }

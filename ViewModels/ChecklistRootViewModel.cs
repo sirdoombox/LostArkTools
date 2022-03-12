@@ -1,11 +1,11 @@
 using System;
 using System.Linq;
-using System.Windows.Threading;
-using Stylet;
+using FluentScheduler;
 
 namespace LostArkChecklist.ViewModels;
 
-public class ChecklistRootViewModel : Conductor<IScreen>.Collection.OneActive
+// TODO: Rework this to have the Character Checklist as a completely separate standalone View/ViewModel
+public class ChecklistRootViewModel : Conductor<CharacterChecklistViewModel>.Collection.OneActive
 {
     private DateTime _serverTime;
     public DateTime ServerTime
@@ -30,16 +30,36 @@ public class ChecklistRootViewModel : Conductor<IScreen>.Collection.OneActive
     
     public RosterChecklistViewModel RosterChecklistVm { get; }
 
-    public ChecklistRootViewModel(DispatcherTimer timer, RosterChecklistViewModel rosterChecklistVm)
+    public ChecklistRootViewModel(RosterChecklistViewModel rosterChecklistVm)
     {
         RosterChecklistVm = rosterChecklistVm;
-        timer.Tick += TimerOnTick;
+        JobManager.AddJob(SecondTick, s => s.ToRunEvery(1).Seconds());
+        JobManager.AddJob(DailyReset, s => s.ToRunEvery(1).Days().At(11,00));
+        JobManager.AddJob(WeeklyReset, s => s.ToRunEvery(1).Weeks().On(DayOfWeek.Thursday).At(11,00));
     }
 
-    private void TimerOnTick(object? sender, EventArgs e)
+    private void DailyReset()
+    {
+        foreach (var item in Items)
+            item.DailyReset();
+    }
+
+    private void WeeklyReset()
+    {
+        foreach(var item in Items)
+            item.WeeklyReset();
+    }
+    
+    private void SecondTick()
     {
         ServerTime = DateTime.UtcNow;
-        TimeUntilDailyReset = 
+        var today = DateTime.Today;
+        var dailyReset = today.AddHours(11);
+        var thursdayReset = dailyReset.AddDays(((int)DayOfWeek.Thursday - (int)today.DayOfWeek + 7) % 7);
+        if (ServerTime > dailyReset)
+            dailyReset = dailyReset.AddDays(1);
+        TimeUntilDailyReset = dailyReset - ServerTime;
+        TimeUntilWeeklyReset = thursdayReset - ServerTime;
     }
 
     protected override void OnInitialActivate()

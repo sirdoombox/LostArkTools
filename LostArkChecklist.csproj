@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="FluentScheduler" Version="5.5.1" />
       <PackageReference Include="MahApps.Metro" Version="2.4.9" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
       <PackageReference Include="Stylet" Version="1.3.6" />

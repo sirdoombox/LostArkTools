@@ -12,17 +12,22 @@
                  Title="Lost Ark Checklist" Height="450" Width="800">
     <Grid Margin="5">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding }"/>
+            <TextBlock Grid.Column="0"
+                       Text="{Binding ServerTime, StringFormat='{}{0: Server Ti\\me: hh:mm}'}" />
+            <TextBlock Grid.Column="1"
+                       Text="{Binding TimeUntilDailyReset, StringFormat={}Daily reset in {0:hh} hours\, {0:mm} minutes}" />
+            <TextBlock Grid.Column="2"
+                       Text="{Binding TimeUntilWeeklyReset, StringFormat={}Weekly reset in {0:hh} hours\, {0:mm} minutes}" />
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -46,12 +51,12 @@
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <ContentControl Grid.Column="0"
                             Margin="5"
-                            s:View.Model="{Binding RosterChecklistVm}"/>
+                            s:View.Model="{Binding RosterChecklistVm}" />
             <ContentControl Grid.Column="1"
                             Margin="5"
                             s:View.Model="{Binding ActiveItem}" />
