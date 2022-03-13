@@ -24,6 +24,7 @@ public class ChecklistBootstrapper : Bootstrapper<ChecklistRootViewModel>
 
     protected override void OnExit(ExitEventArgs e)
     {
+        _userDataService.SetLastOpened();
         _userDataService.SaveUserData();
         base.OnExit(e);
     }

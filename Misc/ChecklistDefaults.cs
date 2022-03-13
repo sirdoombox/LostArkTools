@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using LostArkChecklist.Models;
 
 namespace LostArkChecklist.Misc;
