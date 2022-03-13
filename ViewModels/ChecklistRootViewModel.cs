@@ -1,10 +1,9 @@
 using System;
-using System.Linq;
 using FluentScheduler;
+using LostArkChecklist.Misc;
 
 namespace LostArkChecklist.ViewModels;
 
-// TODO: Rework this to have the Character Checklist as a completely separate standalone View/ViewModel
 public class ChecklistRootViewModel : Screen
 {
     private DateTime _serverTime;
@@ -54,13 +53,8 @@ public class ChecklistRootViewModel : Screen
     
     private void SecondTick()
     {
-        ServerTime = DateTime.UtcNow.AddHours(1);
-        var today = DateTime.Today;
-        var dailyReset = today.AddHours(11);
-        var thursdayReset = dailyReset.AddDays(((int)DayOfWeek.Thursday - (int)today.DayOfWeek + 7) % 7);
-        if (ServerTime > dailyReset)
-            dailyReset = dailyReset.AddDays(1);
-        TimeUntilDailyReset = dailyReset - ServerTime;
-        TimeUntilWeeklyReset = thursdayReset - ServerTime;
+        ServerTime = Time.ServerTime;
+        TimeUntilDailyReset = Time.UntilNextDailyReset;
+        TimeUntilWeeklyReset = Time.UntilNextWeeklyReset;
     }
 }

@@ -1,6 +1,6 @@
 namespace LostArkChecklist.ViewModels;
 
-public class TaskViewModel : PropertyChangedBase
+public class ChecklistItemViewModel : PropertyChangedBase
 {
     private string _taskTitle = "New Task";
     public string TaskTitle

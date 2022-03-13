@@ -10,19 +10,28 @@
                  mc:Ignorable="d"
                  d:DataContext="{d:DesignInstance viewModels:ChecklistRootViewModel}"
                  Title="Lost Ark Checklist" Height="450" Width="800">
-    <Grid Margin="5">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0"
+              Background="{DynamicResource MahApps.Brushes.Gray}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Accent}"/>
+                </Style>
+            </Grid.Resources>
             <TextBlock Grid.Column="0"
-                       Text="{Binding ServerTime, StringFormat='{}{0: Server Ti\\me: HH:mm(UTC)}'}" />
+                       Text="{Binding ServerTime, StringFormat='{}{0: Server Ti\\me (EUC): HH:mm}'}" />
             <TextBlock Grid.Column="1"
                        Text="{Binding TimeUntilDailyReset, StringFormat={}Daily reset in {0:hh} hours\, {0:mm} minutes}" />
             <TextBlock Grid.Column="2"
