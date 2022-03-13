@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:LostArkChecklist.Views"
              xmlns:viewModels="clr-namespace:LostArkChecklist.ViewModels"
              mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance viewModels:ChecklistRootViewModel}"
+             d:DataContext="{d:DesignInstance viewModels:CharacterChecklistViewModel}"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <TextBlock Text="{Binding DisplayName}"/>
+        <TextBlock Text="{Binding CharacterName}"/>
     </Grid>
 </UserControl>

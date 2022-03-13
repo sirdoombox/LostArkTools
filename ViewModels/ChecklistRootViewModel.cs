@@ -5,7 +5,7 @@ using FluentScheduler;
 namespace LostArkChecklist.ViewModels;
 
 // TODO: Rework this to have the Character Checklist as a completely separate standalone View/ViewModel
-public class ChecklistRootViewModel : Conductor<CharacterChecklistViewModel>.Collection.OneActive
+public class ChecklistRootViewModel : Screen
 {
     private DateTime _serverTime;
     public DateTime ServerTime
@@ -29,10 +29,12 @@ public class ChecklistRootViewModel : Conductor<CharacterChecklistViewModel>.Col
     }
     
     public RosterChecklistViewModel RosterChecklistVm { get; }
+    public CharacterViewModel CharacterVm { get; }
 
-    public ChecklistRootViewModel(RosterChecklistViewModel rosterChecklistVm)
+    public ChecklistRootViewModel(RosterChecklistViewModel rosterChecklistVm, CharacterViewModel characterVm)
     {
         RosterChecklistVm = rosterChecklistVm;
+        CharacterVm = characterVm;
         JobManager.AddJob(SecondTick, s => s.ToRunEvery(1).Seconds());
         JobManager.AddJob(DailyReset, s => s.ToRunEvery(1).Days().At(11,00));
         JobManager.AddJob(WeeklyReset, s => s.ToRunEvery(1).Weeks().On(DayOfWeek.Thursday).At(11,00));
@@ -40,37 +42,25 @@ public class ChecklistRootViewModel : Conductor<CharacterChecklistViewModel>.Col
 
     private void DailyReset()
     {
-        foreach (var item in Items)
-            item.DailyReset();
+        RosterChecklistVm.ResetDaily();
+        CharacterVm.ResetDaily();
     }
 
     private void WeeklyReset()
     {
-        foreach(var item in Items)
-            item.WeeklyReset();
+        RosterChecklistVm.ResetWeekly();
+        CharacterVm.ResetWeekly();
     }
     
     private void SecondTick()
     {
         ServerTime = DateTime.UtcNow.AddHours(1);
         var today = DateTime.Today;
-        var dailyReset = today.AddHours(10);
+        var dailyReset = today.AddHours(11);
         var thursdayReset = dailyReset.AddDays(((int)DayOfWeek.Thursday - (int)today.DayOfWeek + 7) % 7);
         if (ServerTime > dailyReset)
             dailyReset = dailyReset.AddDays(1);
         TimeUntilDailyReset = dailyReset - ServerTime;
         TimeUntilWeeklyReset = thursdayReset - ServerTime;
-    }
-
-    protected override void OnInitialActivate()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            Items.Add(new CharacterChecklistViewModel
-            {
-                DisplayName = $"Ass {i}"
-            });
-            ActiveItem = Items.First();
-        }
     }
 }

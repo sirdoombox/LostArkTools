@@ -9,9 +9,5 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Button Command="{s:Action HandleControlClickEvent}"
-                Style="{StaticResource MahApps.Styles.Button.Chromeless}">
-            <iconPacks:BoxIcons Kind="SolidMinusSquare" />
-        </Button>
     </Grid>
 </UserControl>

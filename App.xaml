@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:LostArkChecklist"
              xmlns:bootstrapper="clr-namespace:LostArkChecklist.Bootstrapper"
+             xmlns:converter="clr-namespace:LostArkChecklist.Converters"
              xmlns:s="https://github.com/canton7/Stylet">
     <Application.Resources>
         <ResourceDictionary>
@@ -16,7 +17,8 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/themes/dark.lime.xaml" />
                 <ResourceDictionary>
-                    <!-- Converters here -->
+                    <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+                    <converter:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibility"/>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
