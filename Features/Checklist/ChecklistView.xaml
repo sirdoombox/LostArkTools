@@ -8,45 +8,15 @@
       mc:Ignorable="d"
       d:DataContext="{d:DesignInstance local:ChecklistViewModel}"
       d:DesignHeight="300" d:DesignWidth="300">
-    <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="*" />
-    </Grid.RowDefinitions>
-    <Grid Grid.Row="0"
-          Background="{DynamicResource MahApps.Brushes.Gray8}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.Resources>
-            <Style TargetType="TextBlock">
-                <Setter Property="Margin" Value="5" />
-                <Setter Property="FontWeight" Value="Bold" />
-                <Setter Property="FontSize" Value="16" />
-                <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Accent}" />
-            </Style>
-        </Grid.Resources>
-        <TextBlock Grid.Column="0"
-                   HorizontalAlignment="Left"
-                   Text="{Binding ServerTime, StringFormat='{}{0: Server Ti\\me (EUC): HH:mm}'}" />
-        <TextBlock Grid.Column="1"
-                   HorizontalAlignment="Center"
-                   Text="{Binding TimeUntilDailyReset, StringFormat={}Daily reset in {0:hh} hours\, {0:mm} minutes}" />
-        <TextBlock Grid.Column="2"
-                   HorizontalAlignment="Right"
-                   Text="{Binding TimeUntilWeeklyReset, StringFormat={}Weekly reset in {0:dd} days\, {0:hh} hours\, {0:mm} minutes}" />
-    </Grid>
-    <Grid Grid.Row="1">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <ContentControl Grid.Column="0"
-                        Margin="5"
-                        s:View.Model="{Binding RosterChecklistVm}" />
-        <ContentControl Grid.Column="1"
-                        Margin="5"
-                        s:View.Model="{Binding CharacterVm}" />
-    </Grid>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+    <ContentControl Grid.Column="0"
+                    Margin="5"
+                    s:View.Model="{Binding RosterChecklistVm}" />
+    <ContentControl Grid.Column="1"
+                    Margin="5"
+                    s:View.Model="{Binding CharacterVm}" />
+
 </Grid>

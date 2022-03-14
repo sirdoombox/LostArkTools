@@ -8,12 +8,36 @@
                  xmlns:root="clr-namespace:LostArkChecklist.Features.Root"
                  mc:Ignorable="d"
                  d:DataContext="{d:DesignInstance root:ApplicationRootViewModel}"
-                 Title="Lost Ark Checklist" Height="450" Width="800">
+                 Height="600"
+                 MinHeight="600"
+                 Width="1000"
+                 MinWidth="1000"
+                 Title=" ">
     <mah:MetroWindow.RightWindowCommands>
         <mah:WindowCommands>
             <Button Content="Settings"
-                    Command="{s:Action ToggleConfig}"/>
+                    FontSize="16"
+                    Command="{s:Action ToggleConfig}" 
+                    IsHitTestVisible="True"/>
         </mah:WindowCommands>
     </mah:MetroWindow.RightWindowCommands>
-        <mah:TransitioningContentControl s:View.Model="{Binding ActiveItem}"/>
+    <mah:MetroWindow.LeftWindowCommands>
+        <mah:WindowCommands IsHitTestVisible="False"
+                            ShowLastSeparator="False">
+            <mah:WindowCommands.Resources>
+                <Style BasedOn="{StaticResource MahApps.Styles.Label}" TargetType="Label">
+                    <Setter Property="FontSize" Value="16"/>
+                </Style>
+            </mah:WindowCommands.Resources>
+            <Label Content="{Binding ServerTime}"
+                   VerticalContentAlignment="Center"/>
+            <Label Content="{Binding TimeUntilWeeklyReset}"
+                   ContentStringFormat="Weekly: {0:%d} days"
+                   VerticalContentAlignment="Center" />
+            <Label Content="{Binding TimeUntilDailyReset}"
+                   ContentStringFormat="Daily: {0:%h}hrs, {0:%m}mins"
+                   VerticalContentAlignment="Center" />
+        </mah:WindowCommands>
+    </mah:MetroWindow.LeftWindowCommands>
+    <mah:TransitioningContentControl s:View.Model="{Binding ActiveItem}" />
 </mah:MetroWindow>

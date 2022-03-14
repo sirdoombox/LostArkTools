@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using LostArkChecklist.Misc;
 using LostArkChecklist.Models;
 using Newtonsoft.Json;
 
@@ -30,12 +29,13 @@ public class UserDataService
     {
         if (!File.Exists(_dataPath)) return;
         var rawDat = File.ReadAllText(_dataPath);
-        _currData = JsonConvert.DeserializeObject<UserData>(rawDat) ?? UserData.Default;
+        var dat = JsonConvert.DeserializeObject<UserData>(rawDat);
+        _currData = dat ?? UserData.Default;
     }
 
     public void SetLastOpened()
     {
-        _currData.LastOpened = Time.ServerTime;
+        _currData.LastOpened = DateTime.UtcNow;
     }
 
     public IEnumerable<CharacterData> GetCharacters() => 

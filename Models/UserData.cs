@@ -13,7 +13,7 @@ public class UserData
 
     public static UserData Default => new()
     {
-        LastOpened = Time.ServerTime,
+        LastOpened = DateTime.UtcNow,
         LastCharacterOpened = string.Empty,
         RosterDailies = new List<ChecklistItem>(ChecklistDefaults.RosterDaily),
         RosterWeeklies = new List<ChecklistItem>(ChecklistDefaults.RosterWeekly),

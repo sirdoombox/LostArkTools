@@ -1,5 +1,5 @@
 using System.Windows;
-using FluentScheduler;
+using System.Windows.Threading;
 using LostArkChecklist.Features.Root;
 using LostArkChecklist.Services;
 using StyletIoC;
@@ -9,17 +9,24 @@ namespace LostArkChecklist.Bootstrapper;
 public class ChecklistBootstrapper : Bootstrapper<ApplicationRootViewModel>
 {
     private readonly UserDataService _userDataService = new();
+    private readonly TimeService _timeService = new();
 
     protected override void OnStart()
     {
-        JobManager.UseUtcTime();
-        JobManager.Initialize();
         _userDataService.LoadUserData();
     }
 
     protected override void ConfigureIoC(IStyletIoCBuilder builder)
     {
         builder.Bind<UserDataService>().ToInstance(_userDataService);
+        builder.Bind<TimeService>().ToInstance(_timeService);
+    }
+
+    protected override void OnUnhandledException(DispatcherUnhandledExceptionEventArgs e)
+    {
+        _userDataService.SetLastOpened();
+        _userDataService.SaveUserData();
+        base.OnUnhandledException(e);
     }
 
     protected override void OnExit(ExitEventArgs e)
