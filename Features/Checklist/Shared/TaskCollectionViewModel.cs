@@ -3,13 +3,13 @@ using LostArkChecklist.Models;
 
 namespace LostArkChecklist.Features.Checklist.Shared;
 
-public class ChecklistCollectionViewModel : Screen
+public class TaskCollectionViewModel : Screen
 {
-    public BindableCollection<ChecklistItemViewModel> Tasks { get; } = new();
+    public BindableCollection<TaskViewModel> Tasks { get; } = new();
 
     public void Populate(IEnumerable<ChecklistItem> items)
     {
-        Tasks.AddRange(items.Select(x => new ChecklistItemViewModel(x)));
+        Tasks.AddRange(items.Select(x => new TaskViewModel(x)));
     }
     
     public void Reset()

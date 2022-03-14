@@ -6,7 +6,7 @@ using StyletIoC;
 
 namespace LostArkChecklist.Bootstrapper;
 
-public class ChecklistBootstrapper : Bootstrapper<ChecklistRootViewModel>
+public class ChecklistBootstrapper : Bootstrapper<ApplicationRootViewModel>
 {
     private readonly UserDataService _userDataService = new();
 

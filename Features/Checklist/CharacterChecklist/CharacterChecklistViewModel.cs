@@ -16,8 +16,8 @@ public class CharacterChecklistViewModel : Screen
         }
     }
 
-    public Shared.ChecklistCollectionViewModel Dailies { get; } = new();
-    public Shared.ChecklistCollectionViewModel Weeklies { get; } = new();
+    public Shared.TaskCollectionViewModel Dailies { get; } = new();
+    public Shared.TaskCollectionViewModel Weeklies { get; } = new();
 
     public CharacterData Character { get; }
     
@@ -33,14 +33,14 @@ public class CharacterChecklistViewModel : Screen
     {
         var newTask = new ChecklistItem();
         Character.Weeklies.Add(newTask);
-        Weeklies.Tasks.Add(new ChecklistItemViewModel(newTask));
+        Weeklies.Tasks.Add(new TaskViewModel(newTask));
     }
 
     public void AddDailyClicked()
     {
         var newTask = new ChecklistItem();
         Character.Dailies.Add(newTask);
-        Dailies.Tasks.Add(new ChecklistItemViewModel(newTask));
+        Dailies.Tasks.Add(new TaskViewModel(newTask));
     }
 
     public void DailyReset() => Dailies.Reset();

@@ -4,7 +4,7 @@ using LostArkChecklist.Models;
 
 namespace LostArkChecklist.Features.Checklist.Shared;
 
-public class ChecklistItemViewModel : PropertyChangedBase
+public class TaskViewModel : PropertyChangedBase
 {
     private string _taskTitle = "New Task";
     public string TaskTitle
@@ -50,7 +50,7 @@ public class ChecklistItemViewModel : PropertyChangedBase
 
     private readonly ChecklistItem _item;
 
-    public ChecklistItemViewModel(ChecklistItem item)
+    public TaskViewModel(ChecklistItem item)
     {
         _item = item;
         TaskTitle = item.Title;

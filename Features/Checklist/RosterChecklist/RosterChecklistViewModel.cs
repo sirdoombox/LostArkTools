@@ -4,8 +4,8 @@ namespace LostArkChecklist.Features.Checklist.RosterChecklist;
 
 public class RosterChecklistViewModel : Screen
 {
-    public Shared.ChecklistCollectionViewModel Dailies { get; } = new();
-    public Shared.ChecklistCollectionViewModel Weeklies { get; } = new();
+    public Shared.TaskCollectionViewModel Dailies { get; } = new();
+    public Shared.TaskCollectionViewModel Weeklies { get; } = new();
 
     public RosterChecklistViewModel(UserDataService userDataService)
     {
