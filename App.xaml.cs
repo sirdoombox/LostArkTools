@@ -1,6 +1,5 @@
 ﻿global using Stylet;
 global using System.Collections.Generic;
 
-// TODO: Re-structure and rename project elements before it gets out of hand.
-// TODO: Implement the basics of the roster checklists.
-// TODO: Figure out a way to keep UserData up to date without lazy direct-binding.
+// TODO: Rename project elements, the naming has gotten out of hand at this stage.
+// TODO: Re-implement Character/Roster checklists as a single reusable control.
