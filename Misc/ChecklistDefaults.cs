@@ -17,6 +17,7 @@ public class ChecklistDefaults
 
     public static readonly IReadOnlyList<ChecklistItem> RosterWeekly = new ChecklistItem[]
     {
+        new("Placeholder","Placeholder")
     };
 
     public static readonly IReadOnlyList<ChecklistItem> CharacterDaily = new ChecklistItem[]

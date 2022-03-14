@@ -1,10 +1,12 @@
 using System;
 using FluentScheduler;
+using LostArkChecklist.Features.Checklist.CharacterChecklist;
+using LostArkChecklist.Features.Checklist.RosterChecklist;
 using LostArkChecklist.Misc;
 
-namespace LostArkChecklist.ViewModels;
+namespace LostArkChecklist.Features.Checklist;
 
-public class ChecklistRootViewModel : Screen
+public class ChecklistViewModel : Screen
 {
     private DateTime _serverTime;
     public DateTime ServerTime
@@ -30,7 +32,7 @@ public class ChecklistRootViewModel : Screen
     public RosterChecklistViewModel RosterChecklistVm { get; }
     public CharacterViewModel CharacterVm { get; }
 
-    public ChecklistRootViewModel(RosterChecklistViewModel rosterChecklistVm, CharacterViewModel characterVm)
+    public ChecklistViewModel(RosterChecklistViewModel rosterChecklistVm, CharacterViewModel characterVm)
     {
         RosterChecklistVm = rosterChecklistVm;
         CharacterVm = characterVm;

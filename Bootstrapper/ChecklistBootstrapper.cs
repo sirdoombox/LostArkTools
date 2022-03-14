@@ -1,7 +1,7 @@
 using System.Windows;
 using FluentScheduler;
+using LostArkChecklist.Features.Root;
 using LostArkChecklist.Services;
-using LostArkChecklist.ViewModels;
 using StyletIoC;
 
 namespace LostArkChecklist.Bootstrapper;

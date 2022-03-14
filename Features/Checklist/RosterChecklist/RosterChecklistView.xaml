@@ -1,0 +1,28 @@
+<Grid x:Class="LostArkChecklist.Features.Checklist.RosterChecklist.RosterChecklistView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:s="https://github.com/canton7/Stylet"
+      xmlns:rosterChecklist="clr-namespace:LostArkChecklist.Features.Checklist.RosterChecklist"
+      mc:Ignorable="d"
+      d:DataContext="{d:DesignInstance rosterChecklist:RosterChecklistViewModel}"
+      d:DesignHeight="300" d:DesignWidth="300">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <TextBlock Text="Roster Weeklies"
+               HorizontalAlignment="Center"
+               Grid.Row="0"/>
+    <ContentControl s:View.Model="{Binding Weeklies}" 
+                    Grid.Row="1"/>
+    <TextBlock Text="Roster Dailies"
+               HorizontalAlignment="Center"
+               Grid.Row="2"/>
+    <ContentControl s:View.Model="{Binding Dailies}" 
+                    Grid.Row="3"/>
+</Grid>

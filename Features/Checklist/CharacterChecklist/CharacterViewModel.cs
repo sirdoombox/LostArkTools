@@ -1,10 +1,11 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using LostArkChecklist.Services;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 
-namespace LostArkChecklist.ViewModels;
+namespace LostArkChecklist.Features.Checklist.CharacterChecklist;
 
 public class CharacterViewModel : Conductor<CharacterChecklistViewModel>.Collection.OneActive
 {
@@ -16,28 +17,35 @@ public class CharacterViewModel : Conductor<CharacterChecklistViewModel>.Collect
         set => SetAndNotify(ref _isInEditCharacterMode, value);
     }
 
-    protected override void OnViewLoaded()
+    private readonly UserDataService _userDataService;
+    
+    public CharacterViewModel(UserDataService userDataService)
     {
-        AddNewCharacter();
-    }
+        _userDataService = userDataService;
+        Items.AddRange(_userDataService.GetCharacters().Select(x => new CharacterChecklistViewModel(x)));
+     }
 
     public void EnterEditMode() => IsInEditCharacterMode = true;
 
     public void AddNewCharacter()
     {
-        var newChar = new CharacterChecklistViewModel();
-        Items.Add(newChar);
-        ActiveItem = newChar;
+        var newChar = _userDataService.AddCharacter();
+        var newVm = new CharacterChecklistViewModel(newChar);
+        Items.Add(newVm);
+        ActiveItem = newVm;
     }
 
     public async void DeleteCharacter()
     {
         var window = Application.Current.MainWindow as MetroWindow;
         if (await window.ShowMessageAsync("Confirm Character Deletion",
-                $"Are you sure you want to delete {ActiveItem.CharacterName}?", 
+                $"Are you sure you want to delete {ActiveItem.CharacterName}?",
                 MessageDialogStyle.AffirmativeAndNegative)
             is MessageDialogResult.Affirmative)
+        {
+            _userDataService.RemoveCharacter(ActiveItem.Character);
             Items.Remove(ActiveItem);
+        }
         else
         {
             IsInEditCharacterMode = false;
