@@ -1,11 +1,11 @@
 using System.Windows;
 using System.Windows.Threading;
-using LostArkChecklist.Features.Root;
-using LostArkChecklist.Features.Shared;
-using LostArkChecklist.Services;
+using LostArkTools.Features.Root;
+using LostArkTools.Features.Shared;
+using LostArkTools.Services;
 using StyletIoC;
 
-namespace LostArkChecklist.Bootstrapper;
+namespace LostArkTools.Bootstrapper;
 
 public class ChecklistBootstrapper : Bootstrapper<ApplicationRootViewModel>
 {

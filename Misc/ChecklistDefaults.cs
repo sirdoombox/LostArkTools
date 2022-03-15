@@ -1,6 +1,6 @@
-using LostArkChecklist.Models;
+using LostArkTools.Models;
 
-namespace LostArkChecklist.Misc;
+namespace LostArkTools.Misc;
 
 public class ChecklistDefaults
 {

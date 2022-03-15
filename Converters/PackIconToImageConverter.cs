@@ -4,7 +4,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using MahApps.Metro.IconPacks;
 
-namespace LostArkChecklist.Converters;
+namespace LostArkTools.Converters;
 
 /// <summary>
 /// Converts a <see cref="PackIcon{TKind}" /> to an DrawingImage.

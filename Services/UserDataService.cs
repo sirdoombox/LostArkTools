@@ -1,9 +1,9 @@
 using System;
 using System.IO;
-using LostArkChecklist.Models;
+using LostArkTools.Models;
 using Newtonsoft.Json;
 
-namespace LostArkChecklist.Services;
+namespace LostArkTools.Services;
 
 public class UserDataService
 {
@@ -14,7 +14,7 @@ public class UserDataService
     public UserDataService()
     {
         var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-        _dataDir = Path.Combine(appData, "LostArkChecklist");
+        _dataDir = Path.Combine(appData, "LostArkTools");
         _dataPath = Path.Combine(_dataDir, "UserData.dat");
     }
     

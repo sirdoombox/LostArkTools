@@ -1,7 +1,7 @@
 using System.Linq;
-using LostArkChecklist.Models;
+using LostArkTools.Models;
 
-namespace LostArkChecklist.Features.Checklist.Shared;
+namespace LostArkTools.Features.Checklist.Shared;
 
 public class TaskCollectionViewModel : Screen
 {

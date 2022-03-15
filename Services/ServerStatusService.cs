@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
 using AngleSharp;
-using LostArkChecklist.Models;
+using LostArkTools.Models;
 
-namespace LostArkChecklist.Services;
+namespace LostArkTools.Services;
 
 public class ServerStatusService
 {

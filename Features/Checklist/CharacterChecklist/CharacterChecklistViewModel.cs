@@ -1,7 +1,7 @@
-using LostArkChecklist.Features.Checklist.Shared;
-using LostArkChecklist.Models;
+using LostArkTools.Features.Checklist.Shared;
+using LostArkTools.Models;
 
-namespace LostArkChecklist.Features.Checklist.CharacterChecklist;
+namespace LostArkTools.Features.Checklist.CharacterChecklist;
 
 public class CharacterChecklistViewModel : Screen
 {

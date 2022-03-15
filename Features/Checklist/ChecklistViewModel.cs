@@ -1,10 +1,10 @@
-using LostArkChecklist.Features.Checklist.CharacterChecklist;
-using LostArkChecklist.Features.Checklist.RosterChecklist;
-using LostArkChecklist.Features.Shared;
-using LostArkChecklist.Services;
+using LostArkTools.Features.Checklist.CharacterChecklist;
+using LostArkTools.Features.Checklist.RosterChecklist;
+using LostArkTools.Features.Shared;
+using LostArkTools.Services;
 using MahApps.Metro.IconPacks;
 
-namespace LostArkChecklist.Features.Checklist;
+namespace LostArkTools.Features.Checklist;
 
 public class ChecklistViewModel : FeatureScreenBase
 {

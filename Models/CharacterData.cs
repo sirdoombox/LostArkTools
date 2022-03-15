@@ -1,6 +1,6 @@
-using LostArkChecklist.Misc;
+using LostArkTools.Misc;
 
-namespace LostArkChecklist.Models;
+namespace LostArkTools.Models;
 
 public class CharacterData
 {

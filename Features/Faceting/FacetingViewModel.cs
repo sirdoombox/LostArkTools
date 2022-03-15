@@ -1,7 +1,7 @@
-using LostArkChecklist.Features.Shared;
+using LostArkTools.Features.Shared;
 using MahApps.Metro.IconPacks;
 
-namespace LostArkChecklist.Features.Faceting;
+namespace LostArkTools.Features.Faceting;
 
 public class FacetingViewModel : FeatureScreenBase
 {

@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace LostArkChecklist.Converters;
+namespace LostArkTools.Converters;
 
 public class BooleanToVisibilityConverter : BooleanConverterBase<Visibility>
 {

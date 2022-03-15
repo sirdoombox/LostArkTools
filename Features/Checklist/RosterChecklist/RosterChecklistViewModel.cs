@@ -1,6 +1,6 @@
-using LostArkChecklist.Services;
+using LostArkTools.Services;
 
-namespace LostArkChecklist.Features.Checklist.RosterChecklist;
+namespace LostArkTools.Features.Checklist.RosterChecklist;
 
 public class RosterChecklistViewModel : Screen
 {

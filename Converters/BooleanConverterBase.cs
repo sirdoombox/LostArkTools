@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 
-namespace LostArkChecklist.Converters;
+namespace LostArkTools.Converters;
 
 public class BooleanConverterBase<T> : IValueConverter
 {

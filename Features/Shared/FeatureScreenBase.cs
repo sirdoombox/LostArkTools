@@ -1,6 +1,6 @@
 using MahApps.Metro.IconPacks;
 
-namespace LostArkChecklist.Features.Shared;
+namespace LostArkTools.Features.Shared;
 
 public abstract class FeatureScreenBase : Screen
 {

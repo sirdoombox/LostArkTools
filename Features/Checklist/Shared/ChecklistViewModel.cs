@@ -1,4 +1,4 @@
-namespace LostArkChecklist.Features.Checklist.Shared;
+namespace LostArkTools.Features.Checklist.Shared;
 
 public class ChecklistViewModel : PropertyChangedBase
 {

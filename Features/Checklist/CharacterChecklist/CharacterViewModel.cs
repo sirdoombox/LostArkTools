@@ -1,11 +1,11 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using LostArkChecklist.Services;
+using LostArkTools.Services;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 
-namespace LostArkChecklist.Features.Checklist.CharacterChecklist;
+namespace LostArkTools.Features.Checklist.CharacterChecklist;
 
 public class CharacterViewModel : Conductor<CharacterChecklistViewModel>.Collection.OneActive
 {

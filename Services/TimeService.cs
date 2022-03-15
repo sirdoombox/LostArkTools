@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using FluentScheduler;
 
-namespace LostArkChecklist.Services;
+namespace LostArkTools.Services;
 
 public class TimeService
 {

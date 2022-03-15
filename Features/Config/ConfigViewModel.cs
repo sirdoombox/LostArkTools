@@ -1,7 +1,7 @@
-using LostArkChecklist.Features.Shared;
+using LostArkTools.Features.Shared;
 using MahApps.Metro.IconPacks;
 
-namespace LostArkChecklist.Features.Config;
+namespace LostArkTools.Features.Config;
 
 public class ConfigViewModel : FeatureScreenBase
 {

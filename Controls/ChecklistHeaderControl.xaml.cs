@@ -2,7 +2,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace LostArkChecklist.Controls;
+namespace LostArkTools.Controls;
 
 public partial class ChecklistHeaderControl : Grid
 {

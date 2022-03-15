@@ -1,7 +1,7 @@
-using LostArkChecklist.Features.Shared;
+using LostArkTools.Features.Shared;
 using MahApps.Metro.IconPacks;
 
-namespace LostArkChecklist.Features.ServerStatus;
+namespace LostArkTools.Features.ServerStatus;
 
 public class ServerStatusViewModel : FeatureScreenBase
 {

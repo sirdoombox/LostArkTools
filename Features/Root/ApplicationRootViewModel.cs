@@ -1,13 +1,9 @@
 using System;
 using System.Linq;
-using LostArkChecklist.Features.Checklist;
-using LostArkChecklist.Features.Config;
-using LostArkChecklist.Features.Faceting;
-using LostArkChecklist.Features.ServerStatus;
-using LostArkChecklist.Features.Shared;
-using LostArkChecklist.Services;
+using LostArkTools.Features.Shared;
+using LostArkTools.Services;
 
-namespace LostArkChecklist.Features.Root;
+namespace LostArkTools.Features.Root;
 
 public class ApplicationRootViewModel : Conductor<FeatureScreenBase>.Collection.OneActive
 {

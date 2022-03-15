@@ -1,10 +1,10 @@
-﻿<Application x:Class="LostArkChecklist.App"
+﻿<Application x:Class="LostArkTools.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:LostArkChecklist"
-             xmlns:bootstrapper="clr-namespace:LostArkChecklist.Bootstrapper"
-             xmlns:converter="clr-namespace:LostArkChecklist.Converters"
-             xmlns:s="https://github.com/canton7/Stylet">
+             xmlns:local="clr-namespace:LostArkTools"
+             xmlns:s="https://github.com/canton7/Stylet"
+             xmlns:bootstrapper="clr-namespace:LostArkTools.Bootstrapper"
+             xmlns:converters="clr-namespace:LostArkTools.Converters">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,9 +17,9 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/themes/dark.lime.xaml" />
                 <ResourceDictionary>
-                    <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
-                    <converter:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibility"/>
-                    <converter:PackIconToImageConverter x:Key="PackIconToImage"/>
+                    <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+                    <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibility"/>
+                    <converters:PackIconToImageConverter x:Key="PackIconToImage"/>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

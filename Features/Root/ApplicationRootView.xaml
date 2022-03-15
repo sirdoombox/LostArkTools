@@ -1,21 +1,21 @@
-<mah:MetroWindow x:Class="LostArkChecklist.Features.Root.ApplicationRootView"
+<mah:MetroWindow x:Class="LostArkTools.Features.Root.ApplicationRootView"
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  xmlns:s="https://github.com/canton7/Stylet"
-                 xmlns:root="clr-namespace:LostArkChecklist.Features.Root"
-                 xmlns:misc="clr-namespace:LostArkChecklist.Misc"
-                 xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                 xmlns:local="clr-namespace:LostArkTools.Features.Root"
                  mc:Ignorable="d"
-                 d:DataContext="{d:DesignInstance root:ApplicationRootViewModel}"
+                 d:DataContext="{d:DesignInstance local:ApplicationRootViewModel}"
                  Height="600"
                  MinHeight="600"
                  Width="1000"
                  MinWidth="1000"
-                 Title=" "
-                 x:Name="Window">
+                 Title="Lost Ark Tools">
+    <mah:MetroWindow.TitleTemplate>
+        <DataTemplate/>
+    </mah:MetroWindow.TitleTemplate>
     <mah:MetroWindow.RightWindowCommands>
         <mah:WindowCommands ItemsSource="{Binding Items}"
                             s:View.ActionTarget="{Binding}">

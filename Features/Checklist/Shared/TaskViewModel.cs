@@ -1,8 +1,8 @@
 using System;
 using System.Windows.Input;
-using LostArkChecklist.Models;
+using LostArkTools.Models;
 
-namespace LostArkChecklist.Features.Checklist.Shared;
+namespace LostArkTools.Features.Checklist.Shared;
 
 public class TaskViewModel : PropertyChangedBase
 {

@@ -1,4 +1,4 @@
-namespace LostArkChecklist.Models;
+namespace LostArkTools.Models;
 
 public class RegionStatus
 {
