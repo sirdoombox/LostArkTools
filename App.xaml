@@ -19,6 +19,7 @@
                 <ResourceDictionary>
                     <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
                     <converter:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibility"/>
+                    <converter:PackIconToImageConverter x:Key="PackIconToImage"/>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

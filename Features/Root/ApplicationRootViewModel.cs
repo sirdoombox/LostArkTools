@@ -1,11 +1,13 @@
 using System;
 using LostArkChecklist.Features.Checklist;
 using LostArkChecklist.Features.Config;
+using LostArkChecklist.Features.ServerStatus;
+using LostArkChecklist.Features.Shared;
 using LostArkChecklist.Services;
 
 namespace LostArkChecklist.Features.Root;
 
-public class ApplicationRootViewModel : Conductor<IScreen>
+public class ApplicationRootViewModel : Conductor<FeatureScreenBase>.Collection.OneActive
 {
     private string _serverTime = string.Empty;
     public string ServerTime
@@ -27,29 +29,29 @@ public class ApplicationRootViewModel : Conductor<IScreen>
         get => _timeUntilDailyReset;
         set => SetAndNotify(ref _timeUntilDailyReset, value);
     }
-    
-    private readonly ChecklistViewModel _checklistVm;
-    private readonly ConfigViewModel _configVm;
-    private readonly TimeService _timeService;
 
-    public ApplicationRootViewModel(ChecklistViewModel checkListVm, ConfigViewModel configVm, TimeService timeService)
+    public ApplicationRootViewModel(
+        ChecklistViewModel checkListVm, 
+        ServerStatusViewModel serverVm,
+        ConfigViewModel configVm,
+        TimeService timeService)
     {
-        _checklistVm = checkListVm;
-        _configVm = configVm;
-        _timeService = timeService;
-        timeService.SecondsTick += SecondsTick;
-        ActiveItem = _checklistVm;
+        timeService.SecondsTick += () => SecondsTick(timeService);
+        Items.Add(checkListVm);
+        Items.Add(serverVm);
+        Items.Add(configVm);
+        ActiveItem = checkListVm;
     }
 
-    private void SecondsTick()
+    private void SecondsTick(TimeService ts)
     {
-        ServerTime = _timeService.ServerTimeString;
-        TimeUntilWeeklyReset = _timeService.UntilNextWeeklyReset;
-        TimeUntilDailyReset = _timeService.UntilNextDailyReset;
+        ServerTime = ts.ServerTimeString;
+        TimeUntilWeeklyReset = ts.UntilNextWeeklyReset;
+        TimeUntilDailyReset = ts.UntilNextDailyReset;
     }
 
-    public void ToggleConfig()
+    public void SwitchView(FeatureScreenBase switchTo)
     {
-        ActiveItem = ActiveItem == _configVm ? _checklistVm : _configVm;
+        ActiveItem = switchTo;
     }
 }

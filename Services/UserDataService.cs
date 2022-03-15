@@ -9,11 +9,10 @@ public class UserDataService
 {
     private readonly string _dataDir;
     private readonly string _dataPath;
-    private UserData _currData;
+    private UserData? _currData;
 
     public UserDataService()
     {
-        _currData = UserData.Default;
         var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         _dataDir = Path.Combine(appData, "LostArkChecklist");
         _dataPath = Path.Combine(_dataDir, "UserData.dat");
@@ -27,10 +26,14 @@ public class UserDataService
 
     public void LoadUserData()
     {
-        if (!File.Exists(_dataPath)) return;
+        if (!File.Exists(_dataPath))
+        {
+            _currData = UserData.Default;
+            return;
+        }
         var rawDat = File.ReadAllText(_dataPath);
         var dat = JsonConvert.DeserializeObject<UserData>(rawDat);
-        _currData = dat ?? UserData.Default;
+        _currData = dat;
     }
 
     public void SetLastOpened()
