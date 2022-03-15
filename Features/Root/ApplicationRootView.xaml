@@ -17,29 +17,21 @@
                  Title=" "
                  x:Name="Window">
     <mah:MetroWindow.RightWindowCommands>
-        <mah:WindowCommands>
-            <Button Content="{Binding ActiveItem.DisplayName}"
-                    FontSize="16"
-                    misc:ClickOpensContextMenuBehaviour.Enabled="True">
-                <Button.ContextMenu>
-                    <ContextMenu ItemsSource="{Binding Items}"
-                                 s:View.ActionTarget="{Binding}">
-                        <ContextMenu.ItemTemplate>
-                            <DataTemplate>
-                                <MenuItem Header="{Binding DisplayName}"
-                                          Command="{s:Action SwitchView}"
-                                          CommandParameter="{Binding}">
-                                    <MenuItem.Icon>
-                                        <Image Width="15"
-                                               Height="15"
-                                               Source="{Binding DisplayIcon, Converter={StaticResource PackIconToImage}, ConverterParameter={StaticResource MahApps.Brushes.Text}}" />
-                                    </MenuItem.Icon>
-                                </MenuItem>
-                            </DataTemplate>
-                        </ContextMenu.ItemTemplate>
-                    </ContextMenu>
-                </Button.ContextMenu>
-            </Button>
+        <mah:WindowCommands ItemsSource="{Binding Items}"
+                            s:View.ActionTarget="{Binding}">
+            <mah:WindowCommands.ItemTemplate>
+                <DataTemplate>
+                    <Button Command="{s:Action SwitchView}"
+                            CommandParameter="{Binding}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="15"
+                                   Height="15"
+                                   Source="{Binding DisplayIcon, Converter={StaticResource PackIconToImage}, ConverterParameter={StaticResource MahApps.Brushes.Text}}" />
+                            <TextBlock Text="{Binding DisplayName}"/>
+                        </StackPanel>
+                    </Button>
+                </DataTemplate>
+            </mah:WindowCommands.ItemTemplate>
         </mah:WindowCommands>
     </mah:MetroWindow.RightWindowCommands>
     <mah:MetroWindow.LeftWindowCommands>
@@ -47,7 +39,7 @@
                             ShowLastSeparator="False">
             <mah:WindowCommands.Resources>
                 <Style BasedOn="{StaticResource MahApps.Styles.Label}" TargetType="Label">
-                    <Setter Property="FontSize" Value="16" />
+                    <!-- <Setter Property="FontSize" Value="16" /> -->
                 </Style>
             </mah:WindowCommands.Resources>
             <Label Content="{Binding ServerTime}"
@@ -60,5 +52,6 @@
                    VerticalContentAlignment="Center" />
         </mah:WindowCommands>
     </mah:MetroWindow.LeftWindowCommands>
+
     <mah:TransitioningContentControl s:View.Model="{Binding ActiveItem}" />
 </mah:MetroWindow>
