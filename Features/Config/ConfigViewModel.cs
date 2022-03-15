@@ -5,9 +5,8 @@ namespace LostArkChecklist.Features.Config;
 
 public class ConfigViewModel : FeatureScreenBase
 {
-    public ConfigViewModel()
+    public ConfigViewModel() : base("Settings", PackIconBoxIconsKind.SolidCog, int.MaxValue)
     {
-        DisplayName = "Settings";
-        DisplayIcon = PackIconBoxIconsKind.SolidCog;
+        
     }
 }

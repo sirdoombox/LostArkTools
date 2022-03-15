@@ -11,10 +11,9 @@ public class ChecklistViewModel : FeatureScreenBase
     public RosterChecklistViewModel RosterChecklistVm { get; }
     public CharacterViewModel CharacterVm { get; }
 
-    public ChecklistViewModel(RosterChecklistViewModel rosterChecklistVm, CharacterViewModel characterVm, TimeService timeService)
+    public ChecklistViewModel(RosterChecklistViewModel rosterChecklistVm, CharacterViewModel characterVm, TimeService timeService) 
+        : base("Checklist", PackIconBoxIconsKind.SolidCalendarCheck, int.MinValue)
     {
-        DisplayName = "Checklist";
-        DisplayIcon = PackIconBoxIconsKind.SolidCalendarCheck;
         timeService.DailyReset += DailyReset;
         timeService.WeeklyReset += WeeklyReset;
         RosterChecklistVm = rosterChecklistVm;

@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Threading;
 using LostArkChecklist.Features.Root;
+using LostArkChecklist.Features.Shared;
 using LostArkChecklist.Services;
 using StyletIoC;
 
@@ -20,6 +21,7 @@ public class ChecklistBootstrapper : Bootstrapper<ApplicationRootViewModel>
     {
         builder.Bind<UserDataService>().ToInstance(_userDataService);
         builder.Bind<TimeService>().ToInstance(_timeService);
+        builder.Bind<FeatureScreenBase>().ToAllImplementations();
     }
 
     protected override void OnUnhandledException(DispatcherUnhandledExceptionEventArgs e)

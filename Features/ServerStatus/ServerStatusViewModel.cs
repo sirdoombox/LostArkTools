@@ -5,9 +5,8 @@ namespace LostArkChecklist.Features.ServerStatus;
 
 public class ServerStatusViewModel : FeatureScreenBase
 {
-    public ServerStatusViewModel()
+    public ServerStatusViewModel() : base("Server Status", PackIconBoxIconsKind.SolidServer, 2)
     {
-        DisplayName = "Server Status";
-        DisplayIcon = PackIconBoxIconsKind.SolidServer;
+        
     }
 }
