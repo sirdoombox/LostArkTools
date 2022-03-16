@@ -13,9 +13,14 @@
              HorizontalAlignment="Stretch"
              Height="50"
              MouseDown="{s:Action OnMouseDown}">
-    <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="Auto"/>
-    </Grid.ColumnDefinitions>
-    <TextBlock Text="{Binding TaskTitle}"/>
+    <Grid Visibility="{Binding IsEditMode, Converter={StaticResource InverseBooleanToVisibility}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="{Binding TaskTitle}"/>
+    </Grid>
+    <Grid Visibility="{Binding IsEditMode, Converter={StaticResource BooleanToVisibility}}">
+        
+    </Grid>
 </Grid>

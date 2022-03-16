@@ -10,8 +10,8 @@
                  d:DataContext="{d:DesignInstance local:ApplicationRootViewModel}"
                  Height="600"
                  MinHeight="600"
-                 Width="1000"
-                 MinWidth="1000"
+                 Width="1100"
+                 MinWidth="1100"
                  Title="Lost Ark Tools">
     <mah:MetroWindow.TitleTemplate>
         <DataTemplate/>
