@@ -1,9 +1,12 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using LostArkTools.Extensions;
 using LostArkTools.Services;
+using LostArkTools.Services.Base;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using StyletIoC;
 
 namespace LostArkTools.Features.Checklist.CharacterChecklist;
 
@@ -17,19 +20,19 @@ public class CharacterViewModel : Conductor<CharacterChecklistViewModel>.Collect
         set => SetAndNotify(ref _isInEditCharacterMode, value);
     }
 
-    private readonly UserDataService _userDataService;
+    private readonly ChecklistDataService _checklistDataService;
 
-    public CharacterViewModel(UserDataService userDataService)
+    public CharacterViewModel(IContainer container)
     {
-        _userDataService = userDataService;
-        Items.AddRange(_userDataService.GetCharacters().Select(x => new CharacterChecklistViewModel(x)));
+        _checklistDataService = container.GetSpecificImplementation<ChecklistDataService, ILocalStorageService>();
+        Items.AddRange(_checklistDataService.GetCharacters().Select(x => new CharacterChecklistViewModel(x)));
     }
 
     public void EnterEditMode() => IsInEditCharacterMode = true;
 
     public void AddNewCharacter()
     {
-        var newChar = _userDataService.AddCharacter();
+        var newChar = _checklistDataService.AddCharacter();
         var newVm = new CharacterChecklistViewModel(newChar);
         Items.Add(newVm);
         ActiveItem = newVm;
@@ -43,7 +46,7 @@ public class CharacterViewModel : Conductor<CharacterChecklistViewModel>.Collect
                 MessageDialogStyle.AffirmativeAndNegative)
             is MessageDialogResult.Affirmative)
         {
-            _userDataService.RemoveCharacter(ActiveItem.Character);
+            _checklistDataService.RemoveCharacter(ActiveItem.Character);
             Items.Remove(ActiveItem);
         }
         else

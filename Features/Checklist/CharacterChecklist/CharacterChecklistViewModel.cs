@@ -21,9 +21,9 @@ public class CharacterChecklistViewModel : Screen
     public TaskCollectionViewModel Dailies { get; } = new();
     public TaskCollectionViewModel Weeklies { get; } = new();
 
-    public CharacterData Character { get; }
+    public Character Character { get; }
 
-    public CharacterChecklistViewModel(CharacterData character)
+    public CharacterChecklistViewModel(Character character)
     {
         Character = character;
         Dailies.Populate(character.Dailies);
