@@ -10,17 +10,18 @@
             <ResourceDictionary.MergedDictionaries>
                 <s:ApplicationLoader>
                     <s:ApplicationLoader.Bootstrapper>
-                        <bootstrapper:ChecklistBootstrapper/>
+                        <bootstrapper:ChecklistBootstrapper />
                     </s:ApplicationLoader.Bootstrapper>
                 </s:ApplicationLoader>
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/themes/dark.lime.xaml" />
                 <ResourceDictionary>
-                    <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
-                    <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibility"/>
-                    <converters:PackIconToImageConverter x:Key="PackIconToImage"/>
-                    <converters:StringToAccentBrushConverter x:Key="StringToAccentBrush"/>
+                    <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+                    <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibility" />
+                    <converters:PackIconToImageConverter x:Key="PackIconToImage" />
+                    <converters:StringToAccentBrushConverter x:Key="StringToAccentBrush" />
+                    <converters:BooleanToStatusImageConverter x:Key="BooleanToStatusImage" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

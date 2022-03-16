@@ -1,7 +1,9 @@
 using System;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Input;
 using LostArkTools.Models;
+using MahApps.Metro.IconPacks;
 
 namespace LostArkTools.Features.Checklist.Shared;
 
@@ -35,10 +37,11 @@ public class TaskViewModel : PropertyChangedBase
         get => _isComplete;
         set
         {
-            _item.Completed = value;
             SetAndNotify(ref _isComplete, value);
+            _item.Completed = value;
         }
     }
+    
     
     private bool _isEditMode;
     public bool IsEditMode
@@ -62,11 +65,20 @@ public class TaskViewModel : PropertyChangedBase
         OnRequestDelete = () => { };
     }
 
-    public void OnMouseDown(object sender, MouseButtonEventArgs e)
+    public void OnMouseUp(object sender, MouseButtonEventArgs e)
     {
-        if (e.ClickCount < 2 || IsEditMode) return;
-        IsEditMode = true;
-        OnEditModeChanged.Invoke(IsEditMode);
+        if (IsEditMode) return;
+        switch (e.ChangedButton)
+        {
+            case MouseButton.Left:
+                IsComplete = !IsComplete;
+                break;
+            case MouseButton.Right:
+                IsEditMode = true;
+                OnEditModeChanged.Invoke(IsEditMode);
+                e.Handled = true;
+                break;
+        }
     }
     
     public void TextBoxKeyPressed(object sender, KeyEventArgs e)
