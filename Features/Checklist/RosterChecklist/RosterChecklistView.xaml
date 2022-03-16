@@ -16,7 +16,10 @@
         <RowDefinition Height="Auto" />
         <RowDefinition Height="*" />
     </Grid.RowDefinitions>
-    <Label Content="Double Click To Edit Tasks - Tasks Completion Automatically Resets"/>
+    <Label Content="Left Click To Complete Tasks | Right Click To Edit Tasks | Tasks Completion Automatically Resets."
+           VerticalContentAlignment="Center"
+           HorizontalContentAlignment="Center"
+           Foreground="{DynamicResource MahApps.Brushes.Gray}"/>
     <controls:ChecklistHeaderControl OnAddClicked="{s:Action AddWeeklyClicked}"
                                      Header="Roster Weeklies"
                                      Grid.Row="1" />
