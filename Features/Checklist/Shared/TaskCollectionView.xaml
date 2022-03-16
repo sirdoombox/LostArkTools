@@ -15,15 +15,17 @@
          BorderThickness="2">
     <ItemsControl.ItemTemplate>
         <DataTemplate>
-            <Border x:Name="Test">
+            <Border x:Name="Border"
+                    BorderBrush="White"
+                    BorderThickness="0 0 0 1">
                 <ContentControl s:View.Model="{Binding}"/>
             </Border>
             <DataTemplate.Triggers>
                 <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                    <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Gray10}" TargetName="Test"/>
+                    <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Gray10}" TargetName="Border"/>
                 </Trigger>
                 <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                    <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Gray8}" TargetName="Test"/>
+                    <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Gray8}" TargetName="Border"/>
                 </Trigger>
             </DataTemplate.Triggers>
         </DataTemplate>

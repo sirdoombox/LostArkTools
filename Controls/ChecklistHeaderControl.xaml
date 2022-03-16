@@ -7,17 +7,22 @@
       xmlns:s="https://github.com/canton7/Stylet"
       mc:Ignorable="d"
       d:DataContext="{d:DesignInstance}"
-      Margin="5">
+      Margin="10 10 0 0">
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto" />
         <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
     <Button Grid.Column="0"
+            ToolTip="Add New Task."
+            ToolTipService.InitialShowDelay="0"
             Style="{StaticResource MahApps.Styles.Button.Chromeless}"
             Click="ButtonBase_OnClick">
-        <iconPacks:BoxIcons Kind="SolidAddToQueue"/>
+        <iconPacks:BoxIcons Kind="SolidAddToQueue" />
     </Button>
     <TextBlock Grid.Column="1"
-               Text="{Binding Header}" 
-               Margin="10 0 0 0"/>
+               Text="{Binding Header}"
+               VerticalAlignment="Center"
+               FontSize="14"
+               FontWeight="ExtraBold"
+               Margin="10 0 0 0" />
 </Grid>

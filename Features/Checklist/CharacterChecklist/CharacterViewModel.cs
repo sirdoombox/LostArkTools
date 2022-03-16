@@ -18,12 +18,12 @@ public class CharacterViewModel : Conductor<CharacterChecklistViewModel>.Collect
     }
 
     private readonly UserDataService _userDataService;
-    
+
     public CharacterViewModel(UserDataService userDataService)
     {
         _userDataService = userDataService;
         Items.AddRange(_userDataService.GetCharacters().Select(x => new CharacterChecklistViewModel(x)));
-     }
+    }
 
     public void EnterEditMode() => IsInEditCharacterMode = true;
 
@@ -51,6 +51,7 @@ public class CharacterViewModel : Conductor<CharacterChecklistViewModel>.Collect
             IsInEditCharacterMode = false;
             return;
         }
+
         if (Items.Count <= 0)
             AddNewCharacter();
         else
@@ -67,9 +68,13 @@ public class CharacterViewModel : Conductor<CharacterChecklistViewModel>.Collect
 
     public void ResetDaily()
     {
+        foreach (var character in Items)
+            character.DailyReset();
     }
 
     public void ResetWeekly()
     {
+        foreach (var character in Items)
+            character.WeeklyReset();
     }
 }

@@ -1,26 +1,64 @@
 <Grid x:Class="LostArkTools.Features.Checklist.Shared.TaskView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:s="https://github.com/canton7/Stylet"
-             xmlns:local="clr-namespace:LostArkTools.Features.Checklist.Shared"
-             mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance local:TaskViewModel}"
-             d:DesignHeight="300" d:DesignWidth="300"
-             ToolTip="{Binding TaskNote}"
-             ToolTipService.InitialShowDelay="0"
-             HorizontalAlignment="Stretch"
-             Height="50"
-             MouseDown="{s:Action OnMouseDown}">
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:s="https://github.com/canton7/Stylet"
+      xmlns:local="clr-namespace:LostArkTools.Features.Checklist.Shared"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      mc:Ignorable="d"
+      d:DataContext="{d:DesignInstance local:TaskViewModel}"
+      d:DesignHeight="300" d:DesignWidth="300"
+      HorizontalAlignment="Stretch"
+      Height="50"
+      MouseDown="{s:Action OnMouseDown}">
     <Grid Visibility="{Binding IsEditMode, Converter={StaticResource InverseBooleanToVisibility}}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <TextBlock Text="{Binding TaskTitle}"/>
+        <Label Grid.Column="0"
+               VerticalAlignment="Center"
+               VerticalContentAlignment="Center"
+               Content="{Binding TaskTitle}"/>
+        <Label Grid.Column="1"
+               VerticalAlignment="Stretch"
+               Margin="0 10 15 10"
+               BorderBrush="White"
+               BorderThickness="1"
+               Background="{DynamicResource MahApps.Brushes.Gray9}"
+               VerticalContentAlignment="Center"
+               Content="{Binding TaskNote}" />
+        <CheckBox Grid.Column="2"
+                  IsChecked="{Binding IsComplete}" />
     </Grid>
     <Grid Visibility="{Binding IsEditMode, Converter={StaticResource BooleanToVisibility}}">
-        
+        <Grid.Resources>
+            <Style BasedOn="{StaticResource MahApps.Styles.TextBox}" TargetType="TextBox">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0"
+                Command="{s:Action DeleteTask}">
+            <iconPacks:BoxIcons Kind="SolidXSquare" />
+        </Button>
+        <TextBox Grid.Column="1"
+                 Text="{Binding TaskTitle, UpdateSourceTrigger=PropertyChanged}"
+                 KeyDown="{s:Action TextBoxKeyPressed}"/>
+        <TextBox Grid.Column="2"
+                 Text="{Binding TaskNote, UpdateSourceTrigger=PropertyChanged}"
+                 KeyDown="{s:Action TextBoxKeyPressed}" />
+        <Button Grid.Column="3"
+                Command="{s:Action ExitEditMode}">
+            <iconPacks:BoxIcons Kind="SolidCheckSquare" />
+        </Button>
     </Grid>
 </Grid>

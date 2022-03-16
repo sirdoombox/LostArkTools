@@ -1,4 +1,5 @@
 using System;
+using System.Windows;
 using System.Windows.Input;
 using LostArkTools.Models;
 
@@ -47,6 +48,7 @@ public class TaskViewModel : PropertyChangedBase
     }
     
     public Action<bool> OnEditModeChanged { get; set; }
+    public Action OnRequestDelete { get; set; }
 
     private readonly ChecklistItem _item;
 
@@ -57,6 +59,7 @@ public class TaskViewModel : PropertyChangedBase
         TaskNote = item.Note;
         IsComplete = item.Completed;
         OnEditModeChanged = _ => { };
+        OnRequestDelete = () => { };
     }
 
     public void OnMouseDown(object sender, MouseButtonEventArgs e)
@@ -65,4 +68,15 @@ public class TaskViewModel : PropertyChangedBase
         IsEditMode = true;
         OnEditModeChanged.Invoke(IsEditMode);
     }
+    
+    public void TextBoxKeyPressed(object sender, KeyEventArgs e)
+    {
+        if (e.Key != Key.Enter) return;
+        ExitEditMode();
+        Window.GetWindow((DependencyObject)sender)?.Focus();
+    }
+
+    public void DeleteTask() => OnRequestDelete.Invoke();
+
+    public void ExitEditMode() => OnEditModeChanged.Invoke(false);
 }

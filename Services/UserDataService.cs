@@ -54,9 +54,9 @@ public class UserDataService
     public void RemoveCharacter(CharacterData characterData) =>
         _currData.Characters.Remove(characterData);
 
-    public IEnumerable<ChecklistItem> GetRosterDailies() =>
+    public List<ChecklistItem> GetRosterDailies() =>
         _currData.RosterDailies;
 
-    public IEnumerable<ChecklistItem> GetRosterWeeklies() =>
+    public List<ChecklistItem> GetRosterWeeklies() =>
         _currData.RosterWeeklies;
 }

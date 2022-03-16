@@ -5,23 +5,26 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:s="https://github.com/canton7/Stylet"
       xmlns:local="clr-namespace:LostArkTools.Features.Checklist.RosterChecklist"
+      xmlns:controls="clr-namespace:LostArkTools.Controls"
       mc:Ignorable="d"
       d:DataContext="{d:DesignInstance local:RosterChecklistViewModel}"
       d:DesignHeight="300" d:DesignWidth="300">
     <Grid.RowDefinitions>
-        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="36"/> <!-- Magic number to keep the task boxes aligned... -->
+        <RowDefinition Height="Auto" />
         <RowDefinition Height="*" />
-        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto" />
         <RowDefinition Height="*" />
     </Grid.RowDefinitions>
-    <TextBlock Text="Roster Weeklies"
-               HorizontalAlignment="Center"
-               Grid.Row="0"/>
-    <ContentControl s:View.Model="{Binding Weeklies}" 
-                    Grid.Row="1"/>
-    <TextBlock Text="Roster Dailies"
-               HorizontalAlignment="Center"
-               Grid.Row="2"/>
-    <ContentControl s:View.Model="{Binding Dailies}" 
-                    Grid.Row="3"/>
+    <Label Content="Double Click To Edit Tasks - Tasks Completion Automatically Resets"/>
+    <controls:ChecklistHeaderControl OnAddClicked="{s:Action AddWeeklyClicked}"
+                                     Header="Roster Weeklies"
+                                     Grid.Row="1" />
+    <ContentControl s:View.Model="{Binding Weeklies}"
+                    Grid.Row="2" />
+    <controls:ChecklistHeaderControl OnAddClicked="{s:Action AddDailyClicked}"
+                                     Header="Roster Dailies"
+                                     Grid.Row="3" />
+    <ContentControl s:View.Model="{Binding Dailies}"
+                    Grid.Row="4" />
 </Grid>

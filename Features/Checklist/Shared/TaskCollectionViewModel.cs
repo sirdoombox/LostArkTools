@@ -7,9 +7,36 @@ public class TaskCollectionViewModel : Screen
 {
     public BindableCollection<TaskViewModel> Tasks { get; } = new();
 
-    public void Populate(IEnumerable<ChecklistItem> items)
+    public int TaskCount => Tasks.Count;
+    public int CompletedCount => Tasks.Count(x => x.IsComplete);
+
+    private TaskViewModel? _currentEditedTask;
+    private List<ChecklistItem> _items;
+    
+    public void Populate(List<ChecklistItem> items)
     {
-        Tasks.AddRange(items.Select(x => new TaskViewModel(x)));
+        _items = items;
+        foreach (var task in items)
+            AddNewTask(task);
+    }
+
+    public void AddNewTask(ChecklistItem task)
+    {
+        var newTask = new TaskViewModel(task);
+        newTask.OnEditModeChanged += isEditMode =>
+        {
+            if (_currentEditedTask != null)
+                _currentEditedTask.IsEditMode = false;
+            _currentEditedTask = isEditMode ? newTask : null;
+        };
+        newTask.OnRequestDelete += () =>
+        {
+            _items.Remove(task);
+            _currentEditedTask.IsEditMode = false;
+            Tasks.Remove(_currentEditedTask);
+            _currentEditedTask = null;
+        };
+        Tasks.Add(newTask);
     }
     
     public void Reset()

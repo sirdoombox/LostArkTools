@@ -1,11 +1,13 @@
 using LostArkTools.Features.Checklist.Shared;
 using LostArkTools.Models;
+using LostArkTools.Services;
 
 namespace LostArkTools.Features.Checklist.CharacterChecklist;
 
 public class CharacterChecklistViewModel : Screen
 {
     private string _characterName = string.Empty;
+
     public string CharacterName
     {
         get => _characterName;
@@ -16,11 +18,11 @@ public class CharacterChecklistViewModel : Screen
         }
     }
 
-    public Shared.TaskCollectionViewModel Dailies { get; } = new();
-    public Shared.TaskCollectionViewModel Weeklies { get; } = new();
+    public TaskCollectionViewModel Dailies { get; } = new();
+    public TaskCollectionViewModel Weeklies { get; } = new();
 
     public CharacterData Character { get; }
-    
+
     public CharacterChecklistViewModel(CharacterData character)
     {
         Character = character;
@@ -29,21 +31,21 @@ public class CharacterChecklistViewModel : Screen
         CharacterName = character.Name;
     }
 
-    public void AddWeeklyClicked()
-    {
-        var newTask = new ChecklistItem();
-        Character.Weeklies.Add(newTask);
-        Weeklies.Tasks.Add(new TaskViewModel(newTask));
-    }
-
     public void AddDailyClicked()
     {
         var newTask = new ChecklistItem();
         Character.Dailies.Add(newTask);
-        Dailies.Tasks.Add(new TaskViewModel(newTask));
+        Dailies.AddNewTask(newTask);
+    }
+
+    public void AddWeeklyClicked()
+    {
+        var newTask = new ChecklistItem();
+        Character.Weeklies.Add(newTask);
+        Weeklies.AddNewTask(newTask);
     }
 
     public void DailyReset() => Dailies.Reset();
-    
+
     public void WeeklyReset() => Weeklies.Reset();
 }
