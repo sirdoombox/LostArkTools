@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:LostArkTools.Features.Config"
       xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:s="https://github.com/canton7/Stylet"
       mc:Ignorable="d"
       d:DataContext="{d:DesignInstance local:ConfigViewModel}"
       d:DesignHeight="300" d:DesignWidth="300">
@@ -58,9 +59,46 @@
     <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"
                Grid.Column="1" />
     <StackPanel Grid.Column="2"
-                VerticalAlignment="Center">
+                VerticalAlignment="Center"
+                Margin="50 0 50 0">
+        <StackPanel.Resources>
+            <Style TargetType="DockPanel" x:Key="DockPanelStyle">
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="Margin" Value="{StaticResource ControlMargin}" />
+                <Style.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="DockPanel.Dock" Value="Left" />
+                        <Setter Property="HorizontalAlignment" Value="Left" />
+                        <Setter Property="VerticalAlignment" Value="Top" />
+                        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Accent}" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                    </Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource MahApps.Styles.Button.Chromeless}">
+                        <Setter Property="DockPanel.Dock" Value="Right" />
+                        <Setter Property="Margin" Value="10 0 0 0" />
+                        <Setter Property="HorizontalAlignment" Value="Left" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                    </Style>
+                </Style.Resources>
+            </Style>
+        </StackPanel.Resources>
         <Label Content="Credits" 
                HorizontalAlignment="Center"
                FontSize="22"/>
+        <Separator/>
+        <ItemsControl ItemsSource="{Binding Contributions}"
+                      s:View.ActionTarget="{Binding}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel Style="{StaticResource DockPanelStyle}">
+                        <Label Content="{Binding Description}"/>
+                        <Button Content="{Binding Name}"
+                                Command="{s:Action OpenUrl}"
+                                ToolTip="{Binding Url}"
+                                CommandParameter="{Binding Url}" />
+                    </DockPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </StackPanel>
 </Grid>

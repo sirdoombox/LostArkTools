@@ -17,6 +17,8 @@ public class ConfigViewModel : FeatureScreenBase
 
     public BindableCollection<string> Regions { get; set; } = new();
 
+    public BindableCollection<ContributionViewModel> Contributions { get; } = new();
+
     private string _selectedTheme;
     public string SelectedTheme
     {
@@ -66,6 +68,13 @@ public class ConfigViewModel : FeatureScreenBase
         
         Regions.AddRange(_timeService.GetRegions());
         SelectedRegion = _settings.GetRegion();
+        
+        Contributions.AddRange(ContributionViewModel.Libraries);
+    }
+
+    public void OpenUrl(string url)
+    {
+        System.Diagnostics.Process.Start(url);
     }
 
     private void UpdateTheme()
