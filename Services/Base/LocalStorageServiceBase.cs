@@ -28,6 +28,7 @@ public abstract class LocalStorageServiceBase<T> : ILocalStorageService
 
     public void Save()
     {
+        BeforeSave();
         File.WriteAllText(_dataPath, JsonConvert.SerializeObject(Data));
     }
     
@@ -42,6 +43,11 @@ public abstract class LocalStorageServiceBase<T> : ILocalStorageService
         Data = JsonConvert.DeserializeObject<T>(rawDat);
     }
 
+    protected virtual void BeforeSave()
+    {
+        
+    }
+    
     protected virtual void OnLoadFailed()
     {
         

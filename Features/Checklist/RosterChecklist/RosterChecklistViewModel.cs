@@ -1,9 +1,7 @@
-using System.Linq;
 using LostArkTools.Extensions;
 using LostArkTools.Features.Checklist.Shared;
 using LostArkTools.Models;
 using LostArkTools.Services;
-using LostArkTools.Services.Base;
 using StyletIoC;
 
 namespace LostArkTools.Features.Checklist.RosterChecklist;
@@ -18,7 +16,7 @@ public class RosterChecklistViewModel : Screen
     
     public RosterChecklistViewModel(IContainer container)
     {
-        var checklistDataService = container.GetSpecificImplementation<ChecklistDataService, ILocalStorageService>();
+        var checklistDataService = container.GetStorageService<ChecklistDataService>();
         _rosterDailies = checklistDataService.GetRosterDailies();
         _rosterWeeklies = checklistDataService.GetRosterWeeklies();
         Dailies.Populate(_rosterDailies);

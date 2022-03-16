@@ -1,6 +1,9 @@
 using System;
 using System.Linq;
 using FluentScheduler;
+using LostArkTools.Extensions;
+using LostArkTools.Services.Base;
+using StyletIoC;
 
 namespace LostArkTools.Services;
 
@@ -13,7 +16,6 @@ public class TimeService
         {"South America", TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time")},
         {"EU Central/West", TimeZoneInfo.FindSystemTimeZoneById("Central Europe Standard Time")}
     };
-
     
     public Action WeeklyReset { get; set; } = () => { };
     public Action DailyReset { get; set; } = () => { };
@@ -33,6 +35,9 @@ public class TimeService
     public DateTime NextDailyReset =>
         ServerTime >= ResetToday ? ResetToday.AddDays(1) : ResetToday;
 
+    public DateTime LastDailyReset =>
+        ServerTime < ResetToday ? ResetToday.AddDays(-1) : ResetToday;
+
     public TimeSpan UntilNextDailyReset =>
         NextDailyReset - ServerTime;
 
@@ -41,11 +46,14 @@ public class TimeService
 
     public TimeSpan UntilNextWeeklyReset =>
         NextWeeklyReset - ServerTime;
+
+    public bool IsWeeklyResetDay =>
+        ServerTime.DayOfWeek == DayOfWeek.Thursday;
     
     private TimeZoneInfo _currentTimezone = Servers["EU Central/West"];
     private string _currentServer = "EU Central/West";
 
-    public TimeService()
+    public TimeService(IContainer container)
     {
         JobManager.UseUtcTime();
         JobManager.Initialize();
@@ -54,11 +62,14 @@ public class TimeService
         JobManager.AddJob(() => WeeklyReset(), s => s.ToRunEvery(1).Weeks().On(DayOfWeek.Thursday).At(10,00));
     }
 
-    public IEnumerable<string> GetTimezones() => Servers.Select(x => x.Key);
+    public IEnumerable<string> GetRegions() => Servers.Select(x => x.Key);
 
     public void SetTimezone(string serverName)
     {
         _currentTimezone = Servers[serverName];
         _currentServer = serverName;
     }
+
+    public bool HasResetPassedSinceLastLaunch(DateTime lastOpened) =>
+        DateTime.UtcNow >= LastDailyReset && lastOpened < LastDailyReset;
 }

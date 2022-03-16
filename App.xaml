@@ -20,6 +20,7 @@
                     <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
                     <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibility"/>
                     <converters:PackIconToImageConverter x:Key="PackIconToImage"/>
+                    <converters:StringToAccentBrushConverter x:Key="StringToAccentBrush"/>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

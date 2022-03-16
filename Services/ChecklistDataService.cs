@@ -6,8 +6,11 @@ namespace LostArkTools.Services;
 
 public class ChecklistDataService : LocalStorageServiceBase<ChecklistData>
 {
-    public ChecklistDataService() : base("ChecklistData")
+    private readonly TimeService _ts;
+
+    public ChecklistDataService(TimeService ts) : base("ChecklistData")
     {
+        _ts = ts;
     }
 
     protected override void OnLoadFailed()
@@ -15,9 +18,9 @@ public class ChecklistDataService : LocalStorageServiceBase<ChecklistData>
         Data = ChecklistData.Default;
     }
 
-    public void SetLastOpened()
+    protected override void BeforeSave()
     {
-        Data.LastOpened = DateTime.UtcNow;
+        Data.LastOpened = _ts.ServerTime;
     }
 
     public IEnumerable<Character> GetCharacters() =>
@@ -38,4 +41,10 @@ public class ChecklistDataService : LocalStorageServiceBase<ChecklistData>
 
     public List<ChecklistItem> GetRosterWeeklies() =>
         Data.RosterWeeklies;
+
+    public DateTime GetLastOpened() =>
+        Data.LastOpened;
+
+    public void SetLastOpenedCharacter(string activeItemCharacterName) =>
+        Data.LastCharacterOpened = activeItemCharacterName;
 }

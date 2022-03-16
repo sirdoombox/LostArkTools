@@ -12,7 +12,8 @@
                  MinHeight="600"
                  Width="1100"
                  MinWidth="1100"
-                 Title="Lost Ark Tools">
+                 Title="Lost Ark Tools"
+                 SaveWindowPosition="True">
     <mah:MetroWindow.TitleTemplate>
         <DataTemplate/>
     </mah:MetroWindow.TitleTemplate>

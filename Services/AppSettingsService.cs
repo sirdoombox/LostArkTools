@@ -13,4 +13,15 @@ public class AppSettingsService : LocalStorageServiceBase<AppSettings>
     {
         Data = AppSettings.Default;
     }
+
+    public (string theme, string accent) GetThemeAndAccent() => (Data.Theme, Data.Accent);
+
+    public void SetThemeAndAccent(string theme, string accent)
+    {
+        Data.Theme = theme;
+        Data.Accent = accent;
+    }
+
+    public string GetRegion() => Data.Region;
+    public string SetRegion(string region) => Data.Region;
 }

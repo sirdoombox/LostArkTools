@@ -24,7 +24,7 @@ public class CharacterViewModel : Conductor<CharacterChecklistViewModel>.Collect
 
     public CharacterViewModel(IContainer container)
     {
-        _checklistDataService = container.GetSpecificImplementation<ChecklistDataService, ILocalStorageService>();
+        _checklistDataService = container.GetStorageService<ChecklistDataService>();
         Items.AddRange(_checklistDataService.GetCharacters().Select(x => new CharacterChecklistViewModel(x)));
     }
 
@@ -36,6 +36,10 @@ public class CharacterViewModel : Conductor<CharacterChecklistViewModel>.Collect
         var newVm = new CharacterChecklistViewModel(newChar);
         Items.Add(newVm);
         ActiveItem = newVm;
+        ActiveItem.PropertyChanged += (_, _) =>
+        {
+            _checklistDataService.SetLastOpenedCharacter(ActiveItem.CharacterName);
+        };
     }
 
     public async void DeleteCharacter()

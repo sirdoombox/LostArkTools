@@ -10,13 +10,11 @@ namespace LostArkTools.Bootstrapper;
 
 public class ChecklistBootstrapper : Bootstrapper<ApplicationRootViewModel>
 {
-    private readonly TimeService _timeService = new();
-
     protected override void ConfigureIoC(IStyletIoCBuilder builder)
     {
         builder.Bind<ILocalStorageService>().ToAllImplementations().InSingletonScope();
-        builder.Bind<TimeService>().ToInstance(_timeService);
         builder.Bind<FeatureScreenBase>().ToAllImplementations();
+        builder.Bind<TimeService>().ToSelf().InSingletonScope();
     }
 
     protected override void Configure()
