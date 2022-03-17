@@ -22,7 +22,7 @@ public class BooleanToStatusImageConverter : IValueConverter
             Brush = isTrue ? Brushes.LawnGreen : Brushes.Red
         };
         geoDrawing.Pen = new Pen(geoDrawing.Brush, Thickness);
-        var icon = isTrue ? PackIconBoxIconsKind.SolidCheckSquare : PackIconBoxIconsKind.SolidXSquare;
+        var icon = isTrue ? PackIconBoxIconsKind.RegularCheckCircle : PackIconBoxIconsKind.RegularXCircle;
         var pathData = string.Empty;
         PackIconBoxIconsDataFactory.DataIndex.Value?.TryGetValue(icon, out pathData);
         geoDrawing.Geometry = Geometry.Parse(pathData);
