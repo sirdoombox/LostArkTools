@@ -42,6 +42,20 @@ public class CharacterViewModel : Conductor<CharacterChecklistViewModel>.Collect
         };
     }
 
+    public void DuplicateCurrentCharacter()
+    {
+        var newChar = _checklistDataService.AddCharacter();
+        newChar.AddDailies(ActiveItem.Character.Dailies);
+        newChar.AddWeeklies(ActiveItem.Character.Weeklies);
+        var newVm = new CharacterChecklistViewModel(newChar);
+        Items.Add(newVm);
+        ActiveItem = newVm;
+        ActiveItem.PropertyChanged += (_, _) =>
+        {
+            _checklistDataService.SetLastOpenedCharacter(ActiveItem.CharacterName);
+        };
+    }
+
     public async void DeleteCharacter()
     {
         var window = Application.Current.MainWindow as MetroWindow;

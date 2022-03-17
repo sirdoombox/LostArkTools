@@ -15,8 +15,8 @@ public class ChecklistData
     {
         LastOpened = DateTime.UtcNow,
         LastCharacterOpened = string.Empty,
-        RosterDailies = new List<ChecklistItem>(ChecklistDefaults.RosterDaily),
-        RosterWeeklies = new List<ChecklistItem>(ChecklistDefaults.RosterWeekly),
+        RosterDailies = new List<ChecklistItem>(),
+        RosterWeeklies = new List<ChecklistItem>(),
         Characters = new List<Character> { Character.Default }
     };
 }

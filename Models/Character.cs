@@ -11,7 +11,19 @@ public class Character
     public static Character Default => new()
     {
         Name = "New Character",
-        Dailies = new List<ChecklistItem>(ChecklistDefaults.CharacterDaily),
-        Weeklies = new List<ChecklistItem>(ChecklistDefaults.CharacterWeekly)
+        Dailies = new List<ChecklistItem>(),
+        Weeklies = new List<ChecklistItem>()
     };
+
+    public void AddDailies(IEnumerable<ChecklistItem> dailies)
+    {
+        foreach(var daily in dailies)
+            Dailies.Add(new ChecklistItem(daily.Title, daily.Note));
+    }
+    
+    public void AddWeeklies(IEnumerable<ChecklistItem> weeklies)
+    {
+        foreach(var weekly in weeklies)
+            Weeklies.Add(new ChecklistItem(weekly.Title, weekly.Note));
+    }
 }
