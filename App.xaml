@@ -23,6 +23,7 @@
                     <converters:StringToAccentBrushConverter x:Key="StringToAccentBrush" />
                     <converters:BooleanToStatusImageConverter x:Key="BooleanToStatusImage" />
                     <converters:ServerStatusToPackIconImageConverter x:Key="ServerStatusToPackIconImage"/>
+                    <converters:IsLastItemInContainerConverter x:Key="IsLastItemInContainer"/>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

@@ -4,54 +4,50 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:LostArkTools.Features.ServerStatus"
+      xmlns:controls="clr-namespace:LostArkTools.Controls"
       mc:Ignorable="d"
       d:DataContext="{d:DesignInstance local:RegionViewModel}"
       d:DesignHeight="300" d:DesignWidth="300">
-    <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="*" />
-    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="200" />
+        <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
     <Label Content="{Binding Name}"
            HorizontalContentAlignment="Center"
+           VerticalAlignment="Center"
            FontSize="20"
            FontWeight="Bold"
            Foreground="{DynamicResource MahApps.Brushes.Accent}" />
     <ItemsControl ItemsSource="{Binding Servers}"
                   AlternationCount="2"
-                  Grid.Row="1">
-        <ItemsControl.ItemTemplate>
-            <DataTemplate>
-                <Border x:Name="Border">
-                    <Grid Margin="0 5 0 5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Image Width="15"
-                               Height="15"
-                               Margin="15 0 15 0"
-                               Source="{Binding Value, Converter={StaticResource ServerStatusToPackIconImage}}" />
-                        <TextBlock Grid.Column="1"
-                                   Text="{Binding Name}"
-                                   FontSize="13" />
-                    </Grid>
-                </Border>
-                <DataTemplate.Triggers>
-                    <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Gray10}"
-                                TargetName="Border" />
-                    </Trigger>
-                    <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Gray9}"
-                                TargetName="Border" />
-                    </Trigger>
-                </DataTemplate.Triggers>
-            </DataTemplate>
-        </ItemsControl.ItemTemplate>
-        <ItemsControl.ItemsPanel>
-            <ItemsPanelTemplate>
-                <StackPanel />
-            </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-    </ItemsControl>
+                  Grid.Column="1">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="{DynamicResource MahApps.Brushes.Gray10}"
+                            Margin="10 5 10 5"
+                            BorderBrush="{DynamicResource MahApps.Brushes.Gray.SemiTransparent}"
+                            BorderThickness="1">
+                        <Grid Margin="0 5 0 5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Image Width="15"
+                                   Height="15"
+                                   Margin="15 0 15 0"
+                                   Source="{Binding Value, Converter={StaticResource ServerStatusToPackIconImage}}" />
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Name}"
+                                       FontSize="13"
+                                       Margin="0 0 15 0"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <controls:AlignableWrapPanel HorizontalContentAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
 </Grid>

@@ -63,6 +63,7 @@
                  KeyUp="{s:Action CharacterNameKeyPressed}"
                  Margin="5" />
         <Button Grid.Column="1"
+                ToolTip="Delete Character"
                 Command="{s:Action DeleteCharacter}">
             <iconPacks:BoxIcons Kind="SolidTrash" />
         </Button>
