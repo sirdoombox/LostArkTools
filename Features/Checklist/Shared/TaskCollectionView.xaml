@@ -12,7 +12,7 @@
          AlternationCount="2"
          Margin="5"
          BorderBrush="{DynamicResource MahApps.Brushes.Accent}"
-         BorderThickness="2">
+         BorderThickness="1">
     <ItemsControl.ItemTemplate>
         <DataTemplate>
             <Border x:Name="Border"

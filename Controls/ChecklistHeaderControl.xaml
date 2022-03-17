@@ -22,7 +22,7 @@
     <TextBlock Grid.Column="1"
                Text="{Binding Header}"
                VerticalAlignment="Center"
-               FontSize="14"
+               FontSize="16"
                FontWeight="ExtraBold"
                Margin="10 0 0 0" />
 </Grid>
