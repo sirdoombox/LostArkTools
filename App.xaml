@@ -22,6 +22,7 @@
                     <converters:PackIconToImageConverter x:Key="PackIconToImage" />
                     <converters:StringToAccentBrushConverter x:Key="StringToAccentBrush" />
                     <converters:BooleanToStatusImageConverter x:Key="BooleanToStatusImage" />
+                    <converters:ServerStatusToPackIconImageConverter x:Key="ServerStatusToPackIconImage"/>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

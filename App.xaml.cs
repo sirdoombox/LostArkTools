@@ -1,6 +1,9 @@
 ﻿global using Stylet;
 global using System.Collections.Generic;
 
-// TODO: Implement Server Status views - Service already implemented
-// TODO: Implement faceting calculator from the ground up.
-// TODO: Implement engraving searcher from the ground up.
+// TODO: Checklist - Progress bar for each block
+// TODO: Checklist - Reorderable tasks + characters
+// TODO: Checklist - Duplicate character button (save time setting up basics)
+// TODO: ServerStatus - Layout + Functionality improvements
+// TODO: Faceting calculator from the ground up.
+// TODO: Engraving searcher from the ground up.
