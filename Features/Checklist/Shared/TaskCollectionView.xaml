@@ -17,7 +17,7 @@
         <DataTemplate>
             <Border x:Name="Border"
                     BorderBrush="White"
-                    BorderThickness="0 0 0 1">
+                    BorderThickness="0 0 0 0">
                 <ContentControl s:View.Model="{Binding}"/>
             </Border>
             <DataTemplate.Triggers>
@@ -25,7 +25,7 @@
                     <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Gray10}" TargetName="Border"/>
                 </Trigger>
                 <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                    <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Gray8}" TargetName="Border"/>
+                    <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Gray.SemiTransparent}" TargetName="Border"/>
                 </Trigger>
             </DataTemplate.Triggers>
         </DataTemplate>

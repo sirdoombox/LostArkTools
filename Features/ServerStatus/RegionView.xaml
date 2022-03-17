@@ -42,7 +42,7 @@
                                 TargetName="Border" />
                     </Trigger>
                     <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Gray8}"
+                        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Gray9}"
                                 TargetName="Border" />
                     </Trigger>
                 </DataTemplate.Triggers>
