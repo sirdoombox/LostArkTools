@@ -32,7 +32,7 @@ public class ServerStatusToPackIconImageConverter : IValueConverter
                 geoDrawing.Brush = Brushes.Yellow;
                 break;
             case ServerStatus.Value.Maintenance:
-                icon = PackIconBoxIconsKind.RegularX;
+                icon = PackIconBoxIconsKind.RegularWrench;
                 geoDrawing.Brush = Brushes.Red;
                 break;
         }

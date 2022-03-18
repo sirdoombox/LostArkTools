@@ -37,7 +37,7 @@ public class CharacterViewModel : Conductor<CharacterChecklistViewModel>.Collect
 
     public void CharacterChanged(object sender, SelectionChangedEventArgs e)
     {
-        var newSelection = ((ComboBox)sender).SelectedItem as CharacterChecklistViewModel;
+        if (((ComboBox)sender).SelectedItem is not CharacterChecklistViewModel newSelection) return;
         _checklistDataService.SetLastOpenedCharacter(newSelection.CharacterName);
     }
 

@@ -1,14 +1,68 @@
-<UserControl x:Class="LostArkTools.Features.Engravings.EngravingsView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:LostArkTools.Features.Engravings"
-             mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <TextBlock Text="Engravings Coming Soon."
-               VerticalAlignment="Center"
-               HorizontalAlignment="Center"
-               FontSize="22"
-               Foreground="{DynamicResource MahApps.Brushes.Accent}"/>
-</UserControl>
+<Grid x:Class="LostArkTools.Features.Engravings.EngravingsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:LostArkTools.Features.Engravings"
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:s="https://github.com/canton7/Stylet"
+      xmlns:controls="clr-namespace:LostArkTools.Controls"
+      mc:Ignorable="d"
+      d:DataContext="{d:DesignInstance local:EngravingsViewModel}"
+      d:DesignHeight="300" d:DesignWidth="300">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="1*" />
+        <ColumnDefinition Width="3*" />
+    </Grid.ColumnDefinitions>
+    <StackPanel Grid.Column="0">
+        <ComboBox mah:TextBoxHelper.UseFloatingWatermark="True"
+                  mah:TextBoxHelper.Watermark="First Engraving"
+                  IsEditable="True"
+                  ItemsSource="{Binding Engravings}"
+                  MaxDropDownHeight="125"
+                  Style="{DynamicResource MahApps.Styles.ComboBox.Virtualized}"
+                  SelectedItem="{Binding SelectedEngravingOne}"/>
+        <ComboBox mah:TextBoxHelper.UseFloatingWatermark="True"
+                  mah:TextBoxHelper.Watermark="Second Engraving"
+                  IsEditable="True"
+                  ItemsSource="{Binding Engravings}"
+                  MaxDropDownHeight="125"
+                  Style="{DynamicResource MahApps.Styles.ComboBox.Virtualized}"
+                  SelectedItem="{Binding SelectedEngravingTwo}"/>
+        <mah:ToggleSwitch IsOn="{Binding IncludeStat}"
+                          OnContent="Stat Included"
+                          OffContent="Stat Excluded"/>
+        <ComboBox mah:TextBoxHelper.UseFloatingWatermark="True"
+                  mah:TextBoxHelper.Watermark="Stat"
+                  IsEnabled="{Binding IncludeStat}"
+                  ItemsSource="{Binding Stats}"
+                  SelectedItem="{Binding SelectedStat}"/>
+    </StackPanel>
+    <ItemsControl Grid.Column="1"
+                  Margin="10"
+                  ItemsSource="{Binding Builds}">
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <ContentControl s:View.Model="{Binding}"/>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <controls:AlignableWrapPanel HorizontalContentAlignment="Center"/>
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.Template>
+            <ControlTemplate TargetType="ItemsControl">
+                <Border BorderThickness="{TemplateBinding BorderThickness}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        Background="{TemplateBinding Background}">
+                    <ScrollViewer CanContentScroll="False" 
+                                  Padding="{TemplateBinding Padding}"
+                                  Focusable="False">
+                        <ItemsPresenter />
+                    </ScrollViewer>
+                </Border>
+            </ControlTemplate>
+        </ItemsControl.Template>
+    </ItemsControl>
+</Grid>

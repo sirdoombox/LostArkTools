@@ -1,0 +1,427 @@
+[
+  {
+    "Name": "Mayhem Berserker",
+    "Engravings": [
+      "Mayhem",
+      "Master's Tenacity",
+      "Cursed Doll",
+      "Keen Blunt Weapon",
+      "Raid Captain",
+      "Ambush Master",
+      "Grudge",
+      "Increases Mass"
+    ],
+    "PrimaryStat": "Crit",
+    "SecondaryStat": "Swiftness"
+  },
+  {
+    "Name": "Technique Berserker",
+    "Engravings": [
+      "Berserker's Technique",
+      "Ambush Master",
+      "Awakening",
+      "Spirit Absorption",
+      "Raid Captain",
+      "Keen Blunt Weapon",
+      "Super Charge",
+      "Grudge",
+      "Cursed Doll"
+    ],
+    "PrimaryStat": "Specialization",
+    "SecondaryStat": "Crit"
+  },
+  {
+    "Name": "Blue Warlord Gunlancer",
+    "Engravings": [
+      "Combat Readiness",
+      "Barricade",
+      "Awakening",
+      "Spirit Absorption",
+      "Adrenaline",
+      "Stabilized Status",
+      "Grudge",
+      "Cursed Doll"
+    ],
+    "PrimaryStat": "Specialization",
+    "SecondaryStat": "Crit"
+  },
+  {
+    "Name": "Red Warlord Gunlancer",
+    "Engravings": [
+      "Lone Knight",
+      "Super Charge",
+      "Spirit Absorption",
+      "Master Brawler",
+      "Keen Blunt Weapon",
+      "Adrenaline",
+      "Precise Dagger",
+      "Combat Readiness",
+      "Grudge",
+      "Cursed Doll"
+    ],
+    "PrimaryStat": "Crit",
+    "SecondaryStat": "Swiftness"
+  },
+  {
+    "Name": "Judgement Paladin",
+    "Engravings": [
+      "Judgment",
+      "Adrenaline",
+      "Raid Captain",
+      "Awakening",
+      "Grudge",
+      "Cursed Doll",
+      "Stabilized Status",
+      "Keen Blunt Weapon"
+    ],
+    "PrimaryStat": "Crit",
+    "SecondaryStat": "Swiftness"
+  },
+  {
+    "Name": "Aura of Blessing Paladin",
+    "Engravings": [
+      "Blessed Aura",
+      "Awakening",
+      "Expert",
+      "Spirit Absorption",
+      "Heavy Armor",
+      "Drops of Ether",
+      "Vital Point Hit",
+      "Judgment"
+    ],
+    "PrimaryStat": "Specialization",
+    "SecondaryStat": "Swiftness"
+  },
+  {
+    "Name": "Deathblow Striker",
+    "Engravings": [
+      "Deathblow",
+      "Ambush Master",
+      "Keen Blunt Weapon",
+      "Adrenaline",
+      "Spirit Absorption",
+      "Grudge",
+      "Cursed Doll"
+    ],
+    "PrimaryStat": "Specialization",
+    "SecondaryStat": "Crit"
+  },
+  {
+    "Name": "Esoteric Flurry Striker",
+    "Engravings": [
+      "Esoteric Flurry",
+      "Ambush Master",
+      "Keen Blunt Weapon",
+      "Adrenaline",
+      "Spirit Absorption",
+      "Cursed Doll",
+      "Increases Mass",
+      "Grudge"
+    ],
+    "PrimaryStat": "Swiftness",
+    "SecondaryStat": "Crit"
+  },
+  {
+    "Name": "Robust Spirit Soulfist",
+    "Engravings": [
+      "Robust Spirit",
+      "Awakening",
+      "Adrenaline",
+      "Ambush Master",
+      "Grudge",
+      "Cursed Doll",
+      "Increases Mass"
+    ],
+    "PrimaryStat": "Specialization",
+    "SecondaryStat": "Crit"
+  },
+  {
+    "Name": "Energy Overflow Soulfist",
+    "Engravings": [
+      "Energy Overflow",
+      "Cursed Doll",
+      "Raid Captain",
+      "Precise Dagger",
+      "Adrenaline",
+      "Keen Blunt Weapon",
+      "Grudge"
+    ],
+    "PrimaryStat": "Swiftness",
+    "SecondaryStat": "Crit"
+  },
+  {
+    "Name": "Taijutsu Scrapper",
+    "Engravings": [
+      "Ultimate Skill: Taijutsu",
+      "Adrenaline",
+      "Ambush Master",
+      "Grudge",
+      "Cursed Doll",
+      "Keen Blunt Weapon"
+    ],
+    "PrimaryStat": "Crit",
+    "SecondaryStat": "Swiftness"
+  },
+  {
+    "Name": "Shock Training Scrapper",
+    "Engravings": [
+      "Shock Training",
+      "Adrenaline",
+      "Ambush Master",
+      "Spirit Absorption",
+      "Grudge",
+      "Cursed Doll",
+      "Keen Blunt Weapon"
+    ],
+    "PrimaryStat": "Specialization",
+    "SecondaryStat": "Crit"
+  },
+  {
+    "Name": "Esoteric Wardancer",
+    "Engravings": [
+      "Esoteric Skill Enhancement",
+      "Ambush Master",
+      "Keen Blunt Weapon",
+      "Adrenaline",
+      "Raid Captain",
+      "Grudge",
+      "Cursed Doll",
+      "Increases Mass"
+    ],
+    "PrimaryStat": "Swiftness",
+    "SecondaryStat": "Specialization"
+  },
+  {
+    "Name": "First Intention Wardancer",
+    "Engravings": [
+      "First Intention",
+      "Ambush Master",
+      "Raid Captain",
+      "Keen Blunt Weapon",
+      "Lightning Fury",
+      "Grudge",
+      "Cursed Doll",
+      "Increases Mass"
+    ],
+    "PrimaryStat": "Swiftness",
+    "SecondaryStat": "Crit"
+  },
+  {
+    "Name": "Enhanced Weapon Deadeye",
+    "Engravings": [
+      "Enhanced Weapon",
+      "Ambush Master",
+      "Adrenaline",
+      "Spirit Absorption",
+      "Keen Blunt Weapon",
+      "Raid Captain",
+      "Grudge",
+      "Cursed Doll"
+    ],
+    "PrimaryStat": "Specialization",
+    "SecondaryStat": "Swiftness"
+  },
+  {
+    "Name": "Pistoleer Deadeye",
+    "Engravings": [
+      "Pistoleer",
+      "Ambush Master",
+      "Adrenaline",
+      "Precise Dagger",
+      "Keen Blunt Weapon",
+      "Ether Predator",
+      "Grudge",
+      "Cursed Doll"
+    ],
+    "PrimaryStat": "Specialization",
+    "SecondaryStat": "Crit"
+  },
+  {
+    "Name": "Death Strike Companion Sharpshooter",
+    "Engravings": [
+      "Death Strike",
+      "Loyal Companion",
+      "Hit Master",
+      "Keen Blunt Weapon",
+      "Raid Captain",
+      "Grudge",
+      "Cursed Doll"
+    ],
+    "PrimaryStat": "Crit",
+    "SecondaryStat": "Swiftness"
+  },
+  {
+    "Name": "Firepower Enhancement Artillerist",
+    "Engravings": [
+      "Firepower Enhancement",
+      "Adrenaline",
+      "Keen Blunt Weapon",
+      "Hit Master",
+      "Barricade",
+      "Grudge",
+      "Cursed Doll"
+    ],
+    "PrimaryStat": "Swiftness",
+    "SecondaryStat": "Crit"
+  },
+  {
+    "Name": "Barrage Enhancement Artillerist",
+    "Engravings": [
+      "Barrage Enhancement",
+      "Firepower Enhancement",
+      "Barricade",
+      "Hit Master",
+      "Keen Blunt Weapon",
+      "Cursed Doll",
+      "Grudge"
+    ],
+    "PrimaryStat": "Specialization",
+    "SecondaryStat": "Swiftness"
+  },
+  {
+    "Name": "Peacemaker Gunslinger",
+    "Engravings": [
+      "Peacemaker",
+      "Hit Master",
+      "Adrenaline",
+      "Keen Blunt Weapon",
+      "Raid Captain",
+      "Spirit Absorption",
+      "Grudge",
+      "Cursed Doll"
+    ],
+    "PrimaryStat": "Crit",
+    "SecondaryStat": "Swiftness"
+  },
+  {
+    "Name": "Time To Hunt Gunslinger",
+    "Engravings": [
+      "Time to Hunt",
+      "Peacemaker",
+      "Keen Blunt Weapon",
+      "Hit Master",
+      "Adrenaline",
+      "Raid Captain",
+      "Cursed Doll",
+      "Grudge"
+    ],
+    "PrimaryStat": "Crit",
+    "SecondaryStat": "Specialization"
+  },
+  {
+    "Name": "Remaining Energy Deathblade",
+    "Engravings": [
+      "Remaining Energy",
+      "Super Charge",
+      "Ambush Master",
+      "Adrenaline",
+      "Keen Blunt Weapon",
+      "Grudge",
+      "Cursed Doll"
+    ],
+    "PrimaryStat": "Specialization",
+    "SecondaryStat": "Crit"
+  },
+  {
+    "Name": "Surge Deathblade",
+    "Engravings": [
+      "Surge",
+      "Ambush Master",
+      "Adrenaline",
+      "Sight Focus",
+      "Super Charge",
+      "Keen Blunt Weapon",
+      "Cursed Doll",
+      "Grudge"
+    ],
+    "PrimaryStat": "Specialization",
+    "SecondaryStat": "Crit"
+  },
+  {
+    "Name": "Perfect Suppression Shadowhunter",
+    "Engravings": [
+      "Perfect Suppression",
+      "Ambush Master",
+      "Keen Blunt Weapon",
+      "Adrenaline",
+      "Spirit Absorption",
+      "Raid Captain",
+      "Precise Dagger",
+      "Cursed Doll",
+      "Grudge"
+    ],
+    "PrimaryStat": "Swiftness",
+    "SecondaryStat": "Crit"
+  },
+  {
+    "Name": "Demonic Impulse Shadowhunter",
+    "Engravings": [
+      "Demonic Impulse",
+      "Adrenaline",
+      "Hit Master",
+      "Keen Blunt Weapon",
+      "Spirit Absorption",
+      "Raid Captain",
+      "Cursed Doll",
+      "Grudge"
+    ],
+    "PrimaryStat": "Specialization",
+    "SecondaryStat": "Crit"
+  },
+  {
+    "Name": "True Courage Bard",
+    "Engravings": [
+      "True Courage",
+      "Keen Blunt Weapon",
+      "Spirit Absorption",
+      "Heavy Armor",
+      "Adrenaline",
+      "Grudge",
+      "Cursed Doll"
+    ],
+    "PrimaryStat": "Specialization",
+    "SecondaryStat": "Swiftness"
+  },
+  {
+    "Name": "Desperate Salvation Bard",
+    "Engravings": [
+      "Desperate Salvation",
+      "Expert",
+      "Awakening",
+      "Heavy Armor",
+      "Max MP Increase",
+      "Spirit Absorption",
+      "Drops of Ether"
+    ],
+    "PrimaryStat": "Swiftness",
+    "SecondaryStat": "Specialization"
+  },
+  {
+    "Name": "Igniter Sorceress",
+    "Engravings": [
+      "Igniter",
+      "All-Out Attack",
+      "Hit Master",
+      "Precise Dagger",
+      "Adrenaline",
+      "Grudge",
+      "Cursed Doll"
+    ],
+    "PrimaryStat": "Specialization",
+    "SecondaryStat": "Crit"
+  },
+  {
+    "Name": "Reflux Sorceress",
+    "Engravings": [
+      "Reflux",
+      "Precise Dagger",
+      "Hit Master",
+      "Adrenaline",
+      "All-Out Attack",
+      "Grudge",
+      "Cursed Doll"
+    ],
+    "PrimaryStat": "Crit",
+    "SecondaryStat": "Swiftness"
+  }
+]

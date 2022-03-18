@@ -15,6 +15,7 @@ public class ChecklistBootstrapper : Bootstrapper<ApplicationRootViewModel>
         builder.Bind<ILocalStorageService>().ToAllImplementations().InSingletonScope();
         builder.Bind<FeatureScreenBase>().ToAllImplementations();
         builder.Bind<TimeService>().ToSelf().InSingletonScope();
+        builder.Bind<ResourceService>().ToSelf().InSingletonScope();
     }
 
     protected override void Configure()

@@ -1,0 +1,23 @@
+<TextBlock x:Class="LostArkTools.Controls.HighlightableTextBlock"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:LostArkTools.Controls">
+    <TextBlock.Style>
+        <Style TargetType="local:HighlightableTextBlock" BasedOn="{StaticResource MahApps.Styles.TextBlock}">
+            <Style.Triggers>
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Foreground" Value="{Binding HighlightBrush, RelativeSource={RelativeSource Self}}"/>
+                </Trigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsHighlighted" Value="True"/>
+                        <Condition Property="BoldOnHighlight" Value="True"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+    </TextBlock.Style>
+</TextBlock>

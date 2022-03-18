@@ -21,4 +21,13 @@
       <PackageReference Include="Stylet" Version="1.3.6" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Resources\Engravings\Builds.json" />
+      <EmbeddedResource Include="Resources\Engravings\Builds.json" />
+      <None Remove="Resources\Engravings\Engravings.json" />
+      <EmbeddedResource Include="Resources\Engravings\Engravings.json" />
+      <None Remove="Resources\Engravings\Stats.json" />
+      <EmbeddedResource Include="Resources\Engravings\Stats.json" />
+    </ItemGroup>
+
 </Project>
