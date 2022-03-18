@@ -29,6 +29,7 @@
         </Grid.ColumnDefinitions>
         <ComboBox ItemsSource="{Binding Items}"
                   SelectedItem="{Binding ActiveItem}"
+                  SelectionChanged="{s:Action CharacterChanged}"
                   Margin="5"
                   Grid.Row="0">
             <ComboBox.ItemTemplate>

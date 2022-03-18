@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using LostArkTools.Extensions;
 using LostArkTools.Services;
@@ -26,9 +27,19 @@ public class CharacterViewModel : Conductor<CharacterChecklistViewModel>.Collect
     {
         _checklistDataService = container.GetStorageService<ChecklistDataService>();
         Items.AddRange(_checklistDataService.GetCharacters().Select(x => new CharacterChecklistViewModel(x)));
+        var lastOpened = _checklistDataService.GetLastOpenedCharacter();
+        if (!string.IsNullOrWhiteSpace(lastOpened))
+            ActiveItem = Items.First(x => x.CharacterName == lastOpened);
     }
 
-    public void EnterEditMode() => IsInEditCharacterMode = true;
+    public void EnterEditMode() =>
+        IsInEditCharacterMode = true;
+
+    public void CharacterChanged(object sender, SelectionChangedEventArgs e)
+    {
+        var newSelection = ((ComboBox)sender).SelectedItem as CharacterChecklistViewModel;
+        _checklistDataService.SetLastOpenedCharacter(newSelection.CharacterName);
+    }
 
     public void AddNewCharacter()
     {
@@ -36,10 +47,6 @@ public class CharacterViewModel : Conductor<CharacterChecklistViewModel>.Collect
         var newVm = new CharacterChecklistViewModel(newChar);
         Items.Add(newVm);
         ActiveItem = newVm;
-        ActiveItem.PropertyChanged += (_, _) =>
-        {
-            _checklistDataService.SetLastOpenedCharacter(ActiveItem.CharacterName);
-        };
     }
 
     public void DuplicateCurrentCharacter()
@@ -50,10 +57,6 @@ public class CharacterViewModel : Conductor<CharacterChecklistViewModel>.Collect
         var newVm = new CharacterChecklistViewModel(newChar);
         Items.Add(newVm);
         ActiveItem = newVm;
-        ActiveItem.PropertyChanged += (_, _) =>
-        {
-            _checklistDataService.SetLastOpenedCharacter(ActiveItem.CharacterName);
-        };
     }
 
     public async void DeleteCharacter()

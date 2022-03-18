@@ -23,7 +23,7 @@ public class TimeService
 
     private DateTime Today => DateTime.UtcNow.Date;
 
-    private DateTime Now => DateTime.UtcNow;
+    public DateTime Now => DateTime.UtcNow;
 
     public DateTime ServerTime =>
         DateTime.UtcNow + _currentTimezone.BaseUtcOffset;
@@ -35,10 +35,10 @@ public class TimeService
         Today.AddHours(10);
 
     public DateTime NextDailyReset =>
-        ServerTime >= ResetToday ? ResetToday.AddDays(1) : ResetToday;
+        Now >= ResetToday ? ResetToday.AddDays(1) : ResetToday;
 
     public DateTime LastDailyReset =>
-        ServerTime < ResetToday ? ResetToday.AddDays(-1) : ResetToday;
+        Now < ResetToday ? ResetToday.AddDays(-1) : ResetToday;
 
     public TimeSpan UntilNextDailyReset =>
         NextDailyReset - Now;
@@ -73,5 +73,5 @@ public class TimeService
     }
 
     public bool HasResetPassedSinceLastLaunch(DateTime lastOpened) =>
-        DateTime.UtcNow >= LastDailyReset && lastOpened < LastDailyReset;
+        Now >= LastDailyReset && lastOpened < LastDailyReset;
 }

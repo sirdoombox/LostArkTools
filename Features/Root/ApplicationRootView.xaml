@@ -13,7 +13,9 @@
                  Width="1100"
                  MinWidth="1100"
                  Title="Lost Ark Tools"
-                 SaveWindowPosition="True">
+                 SaveWindowPosition="True"
+                 NonActiveWindowTitleBrush="{DynamicResource MahApps.Brushes.Accent4}"
+                 NonActiveBorderBrush="{DynamicResource MahApps.Brushes.Accent4}">
     <mah:MetroWindow.TitleTemplate>
         <DataTemplate />
     </mah:MetroWindow.TitleTemplate>
