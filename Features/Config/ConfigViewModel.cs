@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using ControlzEx.Theming;
@@ -74,7 +75,7 @@ public class ConfigViewModel : FeatureScreenBase
 
     public void OpenUrl(string url)
     {
-        System.Diagnostics.Process.Start(url);
+        Process.Start(new ProcessStartInfo(url) {UseShellExecute = true});
     }
 
     private void UpdateTheme()
