@@ -23,6 +23,8 @@ public class TimeService
 
     private DateTime Today => DateTime.UtcNow.Date;
 
+    private DateTime Now => DateTime.UtcNow;
+
     public DateTime ServerTime =>
         DateTime.UtcNow + _currentTimezone.BaseUtcOffset;
 
@@ -39,13 +41,13 @@ public class TimeService
         ServerTime < ResetToday ? ResetToday.AddDays(-1) : ResetToday;
 
     public TimeSpan UntilNextDailyReset =>
-        NextDailyReset - ServerTime;
+        NextDailyReset - Now;
 
     public DateTime NextWeeklyReset =>
         ResetToday.AddDays(((int)DayOfWeek.Thursday - (int)Today.DayOfWeek + 7) % 7);
 
     public TimeSpan UntilNextWeeklyReset =>
-        NextWeeklyReset - ServerTime;
+        NextWeeklyReset - Now;
 
     public bool IsWeeklyResetDay =>
         ServerTime.DayOfWeek == DayOfWeek.Thursday;
