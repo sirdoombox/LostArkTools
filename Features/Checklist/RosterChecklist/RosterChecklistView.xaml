@@ -10,7 +10,7 @@
       d:DataContext="{d:DesignInstance local:RosterChecklistViewModel}"
       d:DesignHeight="300" d:DesignWidth="300">
     <Grid.RowDefinitions>
-        <RowDefinition Height="36"/> <!-- Magic number to keep the task boxes aligned... -->
+        <RowDefinition Height="36" /> <!-- Magic number to keep the task boxes aligned... -->
         <RowDefinition Height="Auto" />
         <RowDefinition Height="*" />
         <RowDefinition Height="Auto" />
@@ -19,15 +19,19 @@
     <Label Content="Left Click To Complete Tasks | Right Click To Edit Tasks | Tasks Completion Automatically Resets."
            VerticalContentAlignment="Center"
            HorizontalContentAlignment="Center"
-           Foreground="{DynamicResource MahApps.Brushes.Gray}"/>
-    <controls:ChecklistHeaderControl OnAddClicked="{s:Action AddWeeklyClicked}"
-                                     Header="Roster Weeklies"
-                                     Grid.Row="1" />
+           Foreground="{DynamicResource MahApps.Brushes.Gray}" />
+    <controls:ChecklistHeader OnAddClicked="{s:Action AddWeeklyClicked}"
+                              Header="Roster Weeklies"
+                              TotalTasks="{Binding Weeklies.TaskCount}"
+                              TasksCompleted="{Binding Weeklies.CompletedCount}"
+                              Grid.Row="1" />
     <ContentControl s:View.Model="{Binding Weeklies}"
                     Grid.Row="2" />
-    <controls:ChecklistHeaderControl OnAddClicked="{s:Action AddDailyClicked}"
-                                     Header="Roster Dailies"
-                                     Grid.Row="3" />
+    <controls:ChecklistHeader OnAddClicked="{s:Action AddDailyClicked}"
+                              Header="Roster Dailies"
+                              TotalTasks="{Binding Dailies.TaskCount}"
+                              TasksCompleted="{Binding Dailies.CompletedCount}"
+                              Grid.Row="3" />
     <ContentControl s:View.Model="{Binding Dailies}"
                     Grid.Row="4" />
 </Grid>

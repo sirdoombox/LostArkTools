@@ -15,14 +15,16 @@
         <RowDefinition Height="Auto" />
         <RowDefinition Height="*" />
     </Grid.RowDefinitions>
-    <controls:ChecklistHeaderControl OnAddClicked="{s:Action AddWeeklyClicked}"
-                                     Header="Character Weeklies"
-                                     Grid.Row="0" />
+    <controls:ChecklistHeader OnAddClicked="{s:Action AddWeeklyClicked}"
+                              Header="Character Weeklies"
+                              TotalTasks="10"
+                              TasksCompleted="5"
+                              Grid.Row="0" />
     <ContentControl s:View.Model="{Binding Weeklies}"
                     Grid.Row="1" />
-    <controls:ChecklistHeaderControl OnAddClicked="{s:Action AddDailyClicked}"
-                                     Header="Character Dailies"
-                                     Grid.Row="2" />
+    <controls:ChecklistHeader OnAddClicked="{s:Action AddDailyClicked}"
+                              Header="Character Dailies"
+                              Grid.Row="2" />
     <ContentControl s:View.Model="{Binding Dailies}"
                     Grid.Row="3" />
 </Grid>

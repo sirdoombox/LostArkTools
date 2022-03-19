@@ -39,6 +39,7 @@ public class TaskViewModel : PropertyChangedBase
         {
             SetAndNotify(ref _isComplete, value);
             _item.Completed = value;
+            OnStatusChanged?.Invoke();
         }
     }
     
@@ -50,6 +51,7 @@ public class TaskViewModel : PropertyChangedBase
         set => SetAndNotify(ref _isEditMode, value);
     }
     
+    public Action OnStatusChanged { get; set; }
     public Action<bool> OnEditModeChanged { get; set; }
     public Action OnRequestDelete { get; set; }
 
@@ -61,6 +63,7 @@ public class TaskViewModel : PropertyChangedBase
         TaskTitle = item.Title;
         TaskNote = item.Note;
         IsComplete = item.Completed;
+        OnStatusChanged = () => { };
         OnEditModeChanged = _ => { };
         OnRequestDelete = () => { };
     }
@@ -75,7 +78,7 @@ public class TaskViewModel : PropertyChangedBase
                 break;
             case MouseButton.Right:
                 IsEditMode = true;
-                OnEditModeChanged.Invoke(IsEditMode);
+                OnEditModeChanged(IsEditMode);
                 e.Handled = true;
                 break;
         }
@@ -88,7 +91,7 @@ public class TaskViewModel : PropertyChangedBase
         Window.GetWindow((DependencyObject)sender)?.Focus();
     }
 
-    public void DeleteTask() => OnRequestDelete.Invoke();
+    public void DeleteTask() => OnRequestDelete();
 
-    public void ExitEditMode() => OnEditModeChanged.Invoke(false);
+    public void ExitEditMode() => OnEditModeChanged(false);
 }

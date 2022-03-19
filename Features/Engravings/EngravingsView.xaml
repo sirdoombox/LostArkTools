@@ -42,6 +42,7 @@
         <mah:ToggleSwitch IsOn="{Binding FilteringEnabled}"
                           OnContent="Filtering Enabled"
                           OffContent="Showing All Builds"
+                          HorizontalAlignment="Center"
                           Margin="{StaticResource ControlMargin}" />
         <ComboBox mah:TextBoxHelper.Watermark="First Engraving"
                   ItemsSource="{Binding Engravings}"
@@ -52,6 +53,7 @@
         <mah:ToggleSwitch IsOn="{Binding IncludeStat}"
                           OnContent="Stat Included"
                           OffContent="Stat Excluded"
+                          HorizontalAlignment="Center"
                           Margin="{StaticResource ControlMargin}" />
         <ComboBox mah:TextBoxHelper.Watermark="Stat"
                   IsEditable="False"

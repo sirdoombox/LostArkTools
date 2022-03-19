@@ -36,6 +36,11 @@ public class TaskCollectionViewModel : Screen
             Tasks.Remove(_currentEditedTask);
             _currentEditedTask = null;
         };
+        newTask.OnStatusChanged += () =>
+        {
+            NotifyOfPropertyChange(nameof(TaskCount));
+            NotifyOfPropertyChange(nameof(CompletedCount));
+        };
         Tasks.Add(newTask);
     }
     
