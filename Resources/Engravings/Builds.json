@@ -31,7 +31,7 @@
     "SecondaryStat": "Crit"
   },
   {
-    "Name": "Blue Warlord Gunlancer",
+    "Name": "Blue Gunlancer",
     "Engravings": [
       "Combat Readiness",
       "Barricade",
@@ -46,7 +46,7 @@
     "SecondaryStat": "Crit"
   },
   {
-    "Name": "Red Warlord Gunlancer",
+    "Name": "Red Gunlancer",
     "Engravings": [
       "Lone Knight",
       "Super Charge",
@@ -78,7 +78,7 @@
     "SecondaryStat": "Swiftness"
   },
   {
-    "Name": "Aura of Blessing Paladin",
+    "Name": "Blessed Aura Paladin",
     "Engravings": [
       "Blessed Aura",
       "Awakening",
@@ -282,13 +282,13 @@
     "Name": "Peacemaker Gunslinger",
     "Engravings": [
       "Peacemaker",
-      "Hit Master",
-      "Adrenaline",
-      "Keen Blunt Weapon",
-      "Raid Captain",
-      "Spirit Absorption",
       "Grudge",
-      "Cursed Doll"
+      "Adrenaline",
+      "Hit Master",
+      "Keen Blunt Weapon",
+      "Cursed Doll",
+      "Raid Captain",
+      "Spirit Absorption"
     ],
     "PrimaryStat": "Crit",
     "SecondaryStat": "Swiftness"

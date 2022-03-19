@@ -10,45 +10,69 @@
       mc:Ignorable="d"
       d:DataContext="{d:DesignInstance local:EngravingsViewModel}"
       d:DesignHeight="300" d:DesignWidth="300">
+    <Grid.Resources>
+        <Thickness x:Key="ControlMargin">0 10 0 0</Thickness>
+    </Grid.Resources>
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="1*" />
+        <ColumnDefinition Width="Auto" />
         <ColumnDefinition Width="3*" />
     </Grid.ColumnDefinitions>
-    <StackPanel Grid.Column="0">
-        <ComboBox mah:TextBoxHelper.UseFloatingWatermark="True"
-                  mah:TextBoxHelper.Watermark="First Engraving"
-                  IsEditable="True"
+    <StackPanel Grid.Column="0"
+                Margin="10"
+                VerticalAlignment="Center">
+        <StackPanel.Resources>
+            <Style TargetType="ComboBox" BasedOn="{StaticResource MahApps.Styles.ComboBox.Virtualized}">
+                <Setter Property="mah:TextBoxHelper.UseFloatingWatermark" Value="True" />
+                <Setter Property="Margin" Value="{StaticResource ControlMargin}" />
+                <Setter Property="MaxDropDownHeight" Value="200" />
+                <Setter Property="IsEditable" Value="True" />
+            </Style>
+        </StackPanel.Resources>
+        <TextBlock TextWrapping="Wrap"
+                   TextAlignment="Center"
+                   Foreground="{DynamicResource MahApps.Brushes.SemiTransparent}"
+                   FontWeight="Bold">
+            Builds are sourced from MaxRoll.gg and are currently hardcoded. <LineBreak/>
+            Any changes to builds based on feedback or updates to MaxRoll guides will require an update.<LineBreak/>
+            <LineBreak/>
+            Engravings are listed in order of importance.
+        </TextBlock>
+        <Separator Margin="25 25 25 0"/>
+        <mah:ToggleSwitch IsOn="{Binding FilteringEnabled}"
+                          OnContent="Filtering Enabled"
+                          OffContent="Showing All Builds"
+                          Margin="{StaticResource ControlMargin}" />
+        <ComboBox mah:TextBoxHelper.Watermark="First Engraving"
                   ItemsSource="{Binding Engravings}"
-                  MaxDropDownHeight="125"
-                  Style="{DynamicResource MahApps.Styles.ComboBox.Virtualized}"
-                  SelectedItem="{Binding SelectedEngravingOne}"/>
-        <ComboBox mah:TextBoxHelper.UseFloatingWatermark="True"
-                  mah:TextBoxHelper.Watermark="Second Engraving"
-                  IsEditable="True"
+                  SelectedItem="{Binding SelectedEngravingOne}" />
+        <ComboBox mah:TextBoxHelper.Watermark="Second Engraving"
                   ItemsSource="{Binding Engravings}"
-                  MaxDropDownHeight="125"
-                  Style="{DynamicResource MahApps.Styles.ComboBox.Virtualized}"
-                  SelectedItem="{Binding SelectedEngravingTwo}"/>
+                  SelectedItem="{Binding SelectedEngravingTwo}" />
         <mah:ToggleSwitch IsOn="{Binding IncludeStat}"
                           OnContent="Stat Included"
-                          OffContent="Stat Excluded"/>
-        <ComboBox mah:TextBoxHelper.UseFloatingWatermark="True"
-                  mah:TextBoxHelper.Watermark="Stat"
+                          OffContent="Stat Excluded"
+                          Margin="{StaticResource ControlMargin}" />
+        <ComboBox mah:TextBoxHelper.Watermark="Stat"
+                  IsEditable="False"
                   IsEnabled="{Binding IncludeStat}"
                   ItemsSource="{Binding Stats}"
-                  SelectedItem="{Binding SelectedStat}"/>
+                  SelectedItem="{Binding SelectedStat}" />
     </StackPanel>
-    <ItemsControl Grid.Column="1"
+    <Separator Grid.Column="1"
+               Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"
+               Background="{DynamicResource MahApps.Brushes.Gray7}" />
+    <ItemsControl Grid.Column="2"
                   Margin="10"
                   ItemsSource="{Binding Builds}">
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <ContentControl s:View.Model="{Binding}"/>
+                <ContentControl s:View.Model="{Binding}" />
             </DataTemplate>
         </ItemsControl.ItemTemplate>
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
-                <controls:AlignableWrapPanel HorizontalContentAlignment="Center"/>
+                <controls:AlignableWrapPanel HorizontalContentAlignment="Center" />
             </ItemsPanelTemplate>
         </ItemsControl.ItemsPanel>
         <ItemsControl.Template>
@@ -56,7 +80,7 @@
                 <Border BorderThickness="{TemplateBinding BorderThickness}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         Background="{TemplateBinding Background}">
-                    <ScrollViewer CanContentScroll="False" 
+                    <ScrollViewer CanContentScroll="False"
                                   Padding="{TemplateBinding Padding}"
                                   Focusable="False">
                         <ItemsPresenter />

@@ -14,6 +14,13 @@ public class EngravingsViewModel : FeatureScreenBase
     public BindableCollection<string> Stats { get; } = new();
     public BindableCollection<BuildViewModel> Builds { get; } = new();
 
+    private bool _filteringEnabled;
+    public bool FilteringEnabled
+    {
+        get => _filteringEnabled;
+        set => SetAndNotify(ref _filteringEnabled, value);
+    }
+    
     private string _selectedEngravingOne;
     public string SelectedEngravingOne
     {
@@ -41,7 +48,7 @@ public class EngravingsViewModel : FeatureScreenBase
         get => _selectedStat;
         set => SetAndNotify(ref _selectedStat, value);
     }
-
+    
     private readonly ICollectionView _buildsView;
     
     public EngravingsViewModel(ResourceService resources) : base("Engravings", PackIconBoxIconsKind.SolidSearch, 4)
@@ -74,6 +81,8 @@ public class EngravingsViewModel : FeatureScreenBase
         foreach (var value in build.Engravings)
             value.IsHighlight = false;
         build.Primary.IsHighlight = build.Secondary.IsHighlight = false;
+
+        if (!FilteringEnabled) return true;
         
         if (IncludeStat && !ProcessStat(build)) return false;
         

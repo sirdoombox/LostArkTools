@@ -13,64 +13,51 @@
         BorderThickness="2"
         Margin="10">
     <Grid>
+        <Grid.Resources>
+            <Style TargetType="controls:HighlightableBorderedText" BasedOn="{StaticResource HighlightableBorderedText}">
+                <Setter Property="BorderBrush" Value="{DynamicResource MahApps.Brushes.Gray9}"/>
+                <Setter Property="HighlightBrush" Value="{DynamicResource MahApps.Brushes.Accent}"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+            </Style>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding BuildName}"
-                   TextWrapping="Wrap"
-                   FontSize="16"
-                   FontWeight="Bold"
-                   TextAlignment="Center"
-                   Margin="10 0 10 0"
-                   VerticalAlignment="Center" />
+        <Border Grid.Row="0"
+                Background="{DynamicResource MahApps.Brushes.Gray.SemiTransparent}">
+            <TextBlock Text="{Binding BuildName}"
+                       TextWrapping="Wrap"
+                       FontSize="16"
+                       FontWeight="Bold"
+                       TextAlignment="Center"
+                       Margin="10 0 10 0"
+                       VerticalAlignment="Center" />
+        </Border>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <controls:HighlightableTextBlock Grid.Column="0"
-                                             Text="{Binding Primary.Value}"
-                                             IsHighlighted="{Binding Primary.IsHighlight}"
-                                             HighlightBrush="{DynamicResource MahApps.Brushes.Accent}"
-                                             TextAlignment="Center"
-                                             FontWeight="Bold"/>
-            <controls:HighlightableTextBlock Grid.Column="1"
-                                             Text="{Binding Secondary.Value}"
-                                             IsHighlighted="{Binding Secondary.IsHighlight}"
-                                             HighlightBrush="{DynamicResource MahApps.Brushes.Accent}"
-                                             TextAlignment="Center"/>
+            <controls:HighlightableBorderedText Grid.Column="0"
+                                                BorderThickness="0 2 1 2"
+                                                Text="{Binding Primary.Value}"
+                                                FontSize="13"
+                                                IsHighlighted="{Binding Primary.IsHighlight}" />
+            <controls:HighlightableBorderedText Grid.Column="1"
+                                                BorderThickness="1 2 0 2"
+                                                Text="{Binding Secondary.Value}"
+                                                FontSize="13"
+                                                IsHighlighted="{Binding Secondary.IsHighlight}" />
         </Grid>
-        <Separator Grid.Row="2"
-                   Background="{DynamicResource MahApps.Brushes.Gray2}" />
-        <ItemsControl Grid.Row="3"
+        <ItemsControl Grid.Row="2"
                       ItemsSource="{Binding Engravings}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Value}" 
-                               x:Name="EngravingText"/>
-                    <DataTemplate.Triggers>
-                        <DataTrigger Binding="{Binding IsHighlight}" 
-                                     Value="True">
-                            <Setter TargetName="EngravingText" 
-                                    Property="Foreground" 
-                                    Value="{DynamicResource MahApps.Brushes.Accent}"/>
-                            <Setter TargetName="EngravingText" 
-                                    Property="FontWeight" 
-                                    Value="Bold"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding IsHighlight}" 
-                                     Value="False">
-                            <Setter TargetName="EngravingText" 
-                                    Property="Foreground" 
-                                    Value="{DynamicResource MahApps.Brushes.Text}"/>
-                            <Setter TargetName="EngravingText" 
-                                    Property="FontWeight" 
-                                    Value="Normal"/>
-                        </DataTrigger>
-                    </DataTemplate.Triggers>
+                    <controls:HighlightableBorderedText BorderThickness="0 0 0 1"
+                                                        Text="{Binding Value}"
+                                                        IsHighlighted="{Binding IsHighlight}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemsPanel>

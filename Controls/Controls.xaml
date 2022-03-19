@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:LostArkTools.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Controls/HighlightableBorderedText.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <Style BasedOn="{StaticResource HighlightableBorderedText}" TargetType="{x:Type controls:HighlightableBorderedText}"/>
+</ResourceDictionary>
