@@ -14,7 +14,7 @@
         Margin="10">
     <Grid>
         <Grid.Resources>
-            <Style TargetType="controls:HighlightableBorderedText" BasedOn="{StaticResource HighlightableBorderedText}">
+            <Style TargetType="controls:HighlightableBorderedText" >
                 <Setter Property="BorderBrush" Value="{DynamicResource MahApps.Brushes.Gray9}"/>
                 <Setter Property="HighlightBrush" Value="{DynamicResource MahApps.Brushes.Accent}"/>
                 <Setter Property="TextAlignment" Value="Center"/>

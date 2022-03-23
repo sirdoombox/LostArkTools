@@ -10,7 +10,7 @@ public class TaskCollectionViewModel : Screen
     public int TaskCount => Tasks.Count;
     public int CompletedCount => Tasks.Count(x => x.IsComplete);
 
-    private TaskViewModel? _currentEditedTask;
+    private TaskViewModel _currentEditedTask;
     private List<ChecklistItem> _items;
     
     public void Populate(List<ChecklistItem> items)

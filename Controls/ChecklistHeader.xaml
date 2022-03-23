@@ -8,8 +8,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:ChecklistHeader}">
                     <Grid Margin="5 0 5 0">
-                        <mah:MetroProgressBar Grid.Column="2"
-                                              SmallChange="1"
+                        <mah:MetroProgressBar SmallChange="1"
                                               LargeChange="1"
                                               Minimum="0"
                                               Maximum="{TemplateBinding TotalTasks}"

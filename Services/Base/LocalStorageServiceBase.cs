@@ -9,7 +9,7 @@ public abstract class LocalStorageServiceBase<T> : ILocalStorageService
 {
     private static readonly string DataDir;
     
-    protected T? Data { get; set; }
+    protected T Data { get; set; }
     
     private readonly string _dataPath;
     

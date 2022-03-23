@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace LostArkTools.Misc;
+namespace LostArkTools.Behaviours;
 
 public class ClickOpensContextMenuBehaviour
 {

@@ -1,13 +1,22 @@
-<UserControl x:Class="LostArkTools.Features.Faceting.FacetingView"
+<Grid x:Class="LostArkTools.Features.Faceting.FacetingView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:LostArkTools.Features.Faceting"
+             xmlns:s="https://github.com/canton7/Stylet"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <TextBlock Text="Faceting Coming Soon."
-               VerticalAlignment="Center"
-               HorizontalAlignment="Center"
-               FontSize="22"
-               Foreground="{DynamicResource MahApps.Brushes.Accent}"/>
-</UserControl>
+             d:DataContext="{d:DesignInstance local:FacetingViewModel}">
+    <ItemsControl ItemsSource="{Binding RowViews}">
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <ContentControl s:View.Model="{Binding}"/>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel/>
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+    </ItemsControl>
+</Grid>

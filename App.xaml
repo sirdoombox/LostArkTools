@@ -25,6 +25,8 @@
                     <converters:BooleanToStatusImageConverter x:Key="BooleanToStatusImage" />
                     <converters:ServerStatusToPackIconImageConverter x:Key="ServerStatusToPackIconImage"/>
                     <converters:IsLastItemInContainerConverter x:Key="IsLastItemInContainer"/>
+                    <converters:ChanceToPercentStringConverter x:Key="ChanceToPercentString"/>
+                    <converters:RollStateToBrushConverter x:Key="RollStateToBrush"/>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

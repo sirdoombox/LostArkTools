@@ -42,8 +42,7 @@ public class TaskViewModel : PropertyChangedBase
             OnStatusChanged?.Invoke();
         }
     }
-    
-    
+
     private bool _isEditMode;
     public bool IsEditMode
     {

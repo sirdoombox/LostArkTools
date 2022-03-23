@@ -11,16 +11,14 @@ public class ServerStatusViewModel : FeatureScreenBase
 
     private readonly ServerStatusService _statusService;
     
-    
-    
     public ServerStatusViewModel(ServerStatusService statusService) : base("Server Status", PackIconBoxIconsKind.SolidServer, 2)
     {
         _statusService = statusService;
     }
 
-    protected override void OnActivate() => Refresh();
+    protected override void OnActivate() => RefreshList();
 
-    public async void Refresh()
+    public async void RefreshList()
     {
         Regions.Clear();
         var res = await _statusService.GetRegionStatuses();
