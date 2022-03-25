@@ -6,6 +6,7 @@
         <Nullable>disable</Nullable>
         <UseWPF>true</UseWPF>
         <ApplicationIcon>lostarktools.ico</ApplicationIcon>
+        <AssemblyVersion>0.0.6</AssemblyVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">

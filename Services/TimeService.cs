@@ -21,21 +21,21 @@ public class TimeService
     public Action DailyReset { get; set; } = () => { };
     public Action SecondsTick { get; set; } = () => { };
 
-    private DateTime Today => DateTime.UtcNow.Date;
+    private static DateTime Today => DateTime.UtcNow.Date;
 
-    public DateTime Now => DateTime.UtcNow;
+    public static DateTime Now => DateTime.UtcNow;
 
-    public DateTime ServerTime =>
+    public DateTime ServerNow =>
         DateTime.UtcNow + _currentTimezone.BaseUtcOffset;
 
     public string ServerTimeString =>
-        $"Server Time ({_currentServer}): {ServerTime:HH:mm}";
+        $"Server Time ({_currentServer}): {ServerNow:HH:mm}";
 
     public DateTime ResetToday =>
         Today.AddHours(10);
 
     public DateTime NextDailyReset =>
-        Now >= ResetToday ? ResetToday.AddDays(1) : ResetToday;
+        Now > ResetToday ? ResetToday.AddDays(1) : ResetToday;
 
     public DateTime LastDailyReset =>
         Now < ResetToday ? ResetToday.AddDays(-1) : ResetToday;
@@ -50,7 +50,7 @@ public class TimeService
         NextWeeklyReset - Now;
 
     public bool IsWeeklyResetDay =>
-        ServerTime.DayOfWeek == DayOfWeek.Thursday;
+        Now.DayOfWeek == DayOfWeek.Thursday;
     
     private TimeZoneInfo _currentTimezone = Servers["EU Central/West"];
     private string _currentServer = "EU Central/West";
@@ -60,8 +60,12 @@ public class TimeService
         JobManager.UseUtcTime();
         JobManager.Initialize();
         JobManager.AddJob(() => SecondsTick(), s => s.ToRunEvery(1).Seconds());
-        JobManager.AddJob(() => DailyReset(), s => s.ToRunEvery(1).Days().At(10,00));
-        JobManager.AddJob(() => WeeklyReset(), s => s.ToRunEvery(1).Weeks().On(DayOfWeek.Thursday).At(10,00));
+        JobManager.AddJob(() =>
+        {
+            DailyReset();
+            if (IsWeeklyResetDay)
+                WeeklyReset();
+        }, s => s.ToRunEvery(1).Days().At(10,00));
     }
 
     public IEnumerable<string> GetRegions() => Servers.Select(x => x.Key);
@@ -73,5 +77,5 @@ public class TimeService
     }
 
     public bool HasResetPassedSinceLastLaunch(DateTime lastOpened) =>
-        Now >= LastDailyReset && lastOpened < LastDailyReset;
+        Now > LastDailyReset && lastOpened < LastDailyReset;
 }

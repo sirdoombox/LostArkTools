@@ -17,13 +17,15 @@
     </Grid.RowDefinitions>
     <controls:ChecklistHeader OnAddClicked="{s:Action AddWeeklyClicked}"
                               Header="Character Weeklies"
-                              TotalTasks="10"
-                              TasksCompleted="5"
+                              TotalTasks="{Binding Weeklies.TaskCount}"
+                              TasksCompleted="{Binding Weeklies.CompletedCount}"
                               Grid.Row="0" />
     <ContentControl s:View.Model="{Binding Weeklies}"
                     Grid.Row="1" />
     <controls:ChecklistHeader OnAddClicked="{s:Action AddDailyClicked}"
                               Header="Character Dailies"
+                              TotalTasks="{Binding Dailies.TaskCount}"
+                              TasksCompleted="{Binding Dailies.CompletedCount}"
                               Grid.Row="2" />
     <ContentControl s:View.Model="{Binding Dailies}"
                     Grid.Row="3" />

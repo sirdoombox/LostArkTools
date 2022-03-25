@@ -20,7 +20,7 @@ public class ChecklistDataService : LocalStorageServiceBase<ChecklistData>
 
     protected override void BeforeSave()
     {
-        Data.LastOpened = _ts.Now;
+        Data.LastOpened = TimeService.Now;
     }
 
     public IEnumerable<Character> GetCharacters() =>
