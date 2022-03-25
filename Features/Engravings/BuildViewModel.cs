@@ -17,12 +17,10 @@ public class BuildViewModel : PropertyChangedBase
     public BuildViewModel(Build build)
     {
         BuildName = build.Name;
-        Primary = new(build.PrimaryStat,11);
-        Secondary = new(build.SecondaryStat,10);
+        Primary = new HighlightableStringViewModel(build.PrimaryStat,11);
+        Secondary = new HighlightableStringViewModel(build.SecondaryStat,10);
         var i = 10;
         foreach (var value in build.Engravings)
-        {
-            Engravings.Add(new(value, i--));
-        }
+            Engravings.Add(new HighlightableStringViewModel(value, i--));
     }
 }
