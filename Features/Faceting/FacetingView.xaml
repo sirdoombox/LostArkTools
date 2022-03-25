@@ -7,16 +7,21 @@
              xmlns:s="https://github.com/canton7/Stylet"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance local:FacetingViewModel}">
-    <ItemsControl ItemsSource="{Binding RowViews}">
-        <ItemsControl.ItemTemplate>
-            <DataTemplate>
-                <ContentControl s:View.Model="{Binding}"/>
-            </DataTemplate>
-        </ItemsControl.ItemTemplate>
-        <ItemsControl.ItemsPanel>
-            <ItemsPanelTemplate>
-                <StackPanel/>
-            </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-    </ItemsControl>
+    <TextBlock Text="Faceting Coming Soon."
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="22"
+                       Foreground="{DynamicResource MahApps.Brushes.Accent}"/>
+    <!-- <ItemsControl ItemsSource="{Binding RowViews}"> -->
+    <!--     <ItemsControl.ItemTemplate> -->
+    <!--         <DataTemplate> -->
+    <!--             <ContentControl s:View.Model="{Binding}"/> -->
+    <!--         </DataTemplate> -->
+    <!--     </ItemsControl.ItemTemplate> -->
+    <!--     <ItemsControl.ItemsPanel> -->
+    <!--         <ItemsPanelTemplate> -->
+    <!--             <StackPanel/> -->
+    <!--         </ItemsPanelTemplate> -->
+    <!--     </ItemsControl.ItemsPanel> -->
+    <!-- </ItemsControl> -->
 </Grid>

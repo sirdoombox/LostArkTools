@@ -48,25 +48,25 @@ public class FacetingViewModel : FeatureScreenBase
     public FacetingViewModel(FacetingSimulatorService faceting)
         : base("Faceting", PackIconBoxIconsKind.SolidDiamond, 2)
     {
-        _faceting = faceting;
-        _scoring = new Scoring();
-        SlotChoices.AddRange(Enumerable.Range(1, 20).Select(i => (byte)i));
-        SelectedSlots = 8;
-        RowViews.AddRange(Enumerable.Range(0, 3).Select(_ => new RowViewModel(this)));
-        Chances.AddRange(EnumExtensions.All<Chance>());
-        SelectedChance = Chances.Last();
-        _gameState = new GameState
-        {
-            CurrChance = SelectedChance,
-            NumSlots = SelectedSlots,
-            Rows = RowViews.Select(x => x.RowState.ToList()).ToArray()
-        };
+        // _faceting = faceting;
+        // _scoring = new Scoring();
+        // SlotChoices.AddRange(Enumerable.Range(1, 20).Select(i => (byte)i));
+        // SelectedSlots = 8;
+        // RowViews.AddRange(Enumerable.Range(0, 3).Select(_ => new RowViewModel(this)));
+        // Chances.AddRange(EnumExtensions.All<Chance>());
+        // SelectedChance = Chances.Last();
+        // _gameState = new GameState
+        // {
+        //     CurrChance = SelectedChance,
+        //     NumSlots = SelectedSlots,
+        //     Rows = RowViews.Select(x => x.RowState.ToList()).ToArray()
+        // };
     }
 
     protected override async void OnInitialActivate()
     {
-        base.OnInitialActivate();
-        await RebuildOptimal();
+        // base.OnInitialActivate();
+        // await RebuildOptimal();
     }
 
     private async Task RebuildOptimal()
